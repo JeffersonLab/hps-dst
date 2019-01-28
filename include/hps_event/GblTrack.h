@@ -30,7 +30,7 @@ class GblTrack : public SvtTrack {
          * @param layer Layer number associated with the given lambda kink.
          * @param lambda_kink The lambda kink value.
          */
-        void setLambdaKink(const int layer, const double lambda_kink) { this->lambda_kinks[layer] = lambda_kink; }
+        void setLambdaKink(const int layer, const double lambda_kink) { lambda_kinks[layer] = lambda_kink; }
 
         /**
          * Set the phi kink of the given layer.
@@ -38,7 +38,7 @@ class GblTrack : public SvtTrack {
          * @param layer Layer number associated with the given phi kink.
          * @param phi_kink The phi kink value.
          */
-        void setPhiKink(const int layer, const double phi_kink) { this->phi_kinks[layer] = phi_kink; }
+        void setPhiKink(const int layer, const double phi_kink) { phi_kinks[layer] = phi_kink; }
 
         /**
          * Set the seed track that was refit to create this GBL track.
@@ -68,7 +68,7 @@ class GblTrack : public SvtTrack {
          *
          * @return The seed track.
          */ 
-        SvtTrack* getSeedTrack() const { return (SvtTrack*) this->seed_track.GetObject(); }
+        SvtTrack* getSeedTrack() const { return (SvtTrack*) seed_track.GetObject(); }
 
         ClassDef(GblTrack, 1)
 

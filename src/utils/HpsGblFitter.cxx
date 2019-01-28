@@ -460,6 +460,6 @@ void HpsGblFitter::setTrackProperties(GblTrack* track, const SvtTrack* seed_trac
     }
 }
 
-void HpsGblFitter::setBField(const double b_field) { 
-    this->b_field = b_field; 
+void HpsGblFitter::setBField(const double B_field) {
+    b_field = B_field;
 } 

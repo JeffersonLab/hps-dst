@@ -79,7 +79,7 @@ class EcalCluster : public TObject, public Cluster {
          *
          * @param Energy : The energy of the Ecal cluster.
          */
-        void setEnergy(const double Energy) { this->energy = Energy; };
+        void setEnergy(const double Energy) { energy = Energy; };
         
         /**
          * Set the time of the cluster.  This currently comes from the hit time

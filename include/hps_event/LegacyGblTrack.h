@@ -75,12 +75,12 @@ class LegacyGblTrack : public TObject {
          *
          * @param chi_squared : The chi^2 of the fit to the track.
          */        
-        void setChi2(const double chi_squared) { this->chi_squared = chi_squared; }
+        void setChi2(const double Chi_squared) { chi_squared = Chi_squared; }
 
         /**
          *
          */
-        void setNdf(const double ndof) { this->ndof = ndof; } 
+        void setNdf(const double Ndof) { ndof = Ndof; }
 
         /**
          *
@@ -90,12 +90,12 @@ class LegacyGblTrack : public TObject {
         /**
          *
          */
-        void setCov(const TMatrixD& cov_matrix) { this->cov_matrix = cov_matrix; }
+        void setCov(const TMatrixD& Cov_matrix) { cov_matrix = Cov_matrix; }
 
         /**
          *
          */
-        void setSeedTrack(SvtTrack* seed_track) { this->seed_track = (TObject*) seed_track; } 
+        void setSeedTrack(SvtTrack* Seed_track) { seed_track = (TObject*) Seed_track; } 
 
         /**
          *

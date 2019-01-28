@@ -44,14 +44,14 @@ class EcalHit : public TObject, public CalorimeterHit {
          *
          * @param Energy : The energy of the hit
          */
-        void setEnergy(const double Energy){ this->energy = Energy; };
+        void setEnergy(const double Energy){ energy = Energy; };
        
         /**
          * Set the time of the hit
          *
          * @param Hit_time : The time of the hit
          */
-        void setTime(const double Hit_time) { this->hit_time = Hit_time; };
+        void setTime(const double Hit_time) { hit_time = Hit_time; };
 
         /**
          * Set the indices of the crystal

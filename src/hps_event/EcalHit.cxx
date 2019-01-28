@@ -28,8 +28,8 @@ void EcalHit::Clear(Option_t* /* options */) {
 }
 
 void EcalHit::setCrystalIndices(int x_index, int y_index) {
-    this->index_x = x_index;
-    this->index_y = y_index;
+    index_x = x_index;
+    index_y = y_index;
 }
 
 // These will be commented out until a need for them is demonstrated.

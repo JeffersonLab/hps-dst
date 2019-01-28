@@ -99,35 +99,35 @@ class HpsParticle : public TObject {
          *
          * @param Goodness_pid The goodness of the PID.
          */
-        void setGoodnessOfPID(const double Goodness_pid) { this->goodness_pid = Goodness_pid; };
+        void setGoodnessOfPID(const double Goodness_pid) { goodness_pid = Goodness_pid; };
 
         /**
          * Set the type of this particle.
          *
          * @param Type The type of this particle
          */
-        void setType(const int Type) { this->type = Type; };
+        void setType(const int Type) { type = Type; };
 
         /**
          * Set the PDG ID of this particle.
          *
          * @param Pdg The PDG ID of this particle
          */
-        void setPDG(const int Pdg) { this->pdg = Pdg; };
+        void setPDG(const int Pdg) { pdg = Pdg; };
        
         /**
          * Set the energy of the particle in GeV.
          *
          * @param Energy The energy of this particle
          */
-        void setEnergy(const double Energy) { this->energy = Energy; };
+        void setEnergy(const double Energy) { energy = Energy; };
         
         /**
          * Set the invariant mass of the particle in GeV.
          *
          * @param Mass The invariant mass of the particle
          */
-        void setMass(const double Mass) { this->mass = Mass; }; 
+        void setMass(const double Mass) { mass = Mass; };
        
         /**
          * Set the momentum of the particle in GeV.
@@ -158,7 +158,7 @@ class HpsParticle : public TObject {
          *
          * @param Vtx_fit_chi2 The chi^2 of the vertex fit
          */
-        void setVertexFitChi2(const double Vtx_fit_chi2) { this->vtx_fit_chi2 = Vtx_fit_chi2; };
+        void setVertexFitChi2(const double Vtx_fit_chi2) { vtx_fit_chi2 = Vtx_fit_chi2; };
         
         /**
          * Get the SVT tracks associated with this particle.

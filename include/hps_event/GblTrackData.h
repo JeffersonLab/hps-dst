@@ -59,7 +59,7 @@ class GblTrackData : public TObject {
         /**
          *
          */
-        void setTrack(SvtTrack* seed_track){ this->seed_track = seed_track; }; 
+        void setTrack(SvtTrack* Seed_track){ seed_track = Seed_track; }; 
         
         /**
          *

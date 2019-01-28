@@ -151,7 +151,7 @@ class HpsEvent : public TObject {
          * @param channel The channel from which the RF time was retrieved.
          * @param rf_time The event RF time. 
          */
-        void setRfTime(const int channel, const double rf_time) { this->rf_times[channel] = rf_time; }; 
+        void setRfTime(const int channel, const double rf_time) { rf_times[channel] = rf_time; }; 
 
         /**
          *
