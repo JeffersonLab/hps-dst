@@ -23,11 +23,14 @@
 //------------//
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <IMPL/LCCollectionVec.h>
 #include <IMPL/LCGenericObjectImpl.h>
 #include <IMPL/LCRelationImpl.h>
 #include <UTIL/LCRelationNavigator.h>
 #include <IMPL/TrackImpl.h>
+#pragma GCC diagnostic pop
 
 //---------------//
 //--- HPS DST ---//

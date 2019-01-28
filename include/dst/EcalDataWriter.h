@@ -23,9 +23,12 @@
 //----------//
 //   LCIO   //
 //----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCCollection.h>
 #include <IMPL/ClusterImpl.h>
 #include <IMPL/CalorimeterHitImpl.h>
+#pragma GCC diagnostic pop
 
 //-----------------//
 //--- HPS Event ---//

@@ -23,8 +23,11 @@
 //------------//
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCGenericObject.h>
 #include <EVENT/LCCollection.h>
+#pragma GCC diagnostic pop
 
 class HpsEventBuilder : public EventBuilder {
 

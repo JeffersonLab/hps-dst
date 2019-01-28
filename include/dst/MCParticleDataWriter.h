@@ -20,10 +20,13 @@
 //----------//
 //   LCIO   //
 //----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCIO.h>
 #include <IMPL/LCCollectionVec.h>
 #include <IMPL/MCParticleImpl.h>
 #include <Exceptions.h>
+#pragma GCC diagnostic pop
 
 //---------------//
 //   HPS Event   //
