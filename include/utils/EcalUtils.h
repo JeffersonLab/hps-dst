@@ -17,6 +17,8 @@
 
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/CalorimeterHit.h>
 #include <IMPL/ClusterImpl.h>
 #include <UTIL/BitField64.h>
@@ -24,6 +26,7 @@
 #include <IMPL/LCRelationImpl.h>
 #include <IMPL/LCCollectionVec.h>
 #include <IMPL/LCGenericObjectImpl.h>
+#pragma GCC diagnostic pop
 
 namespace EcalUtils { 
 
