@@ -3,55 +3,35 @@
 //  AprimeAna
 //
 //  Created by Maurik Holtrop on 5/16/14.
-//  Copyright (c) 2014 University of New Hampshire. All rights reserved.
 //
-PRODUCT_NAME=HpsEvent
-//INSTALLING
-DSTROOT=/Users/maurik/Documents/Analysis/HPS
-DEPLOYMENT_LOCATION = YES
-DEPLOYMENT_POSTPROCESSING = YES
+#include "master.xcconfig"
 
-GCC_SYMBOLS_PRIVATE_EXTERN = NO  // Otherwise, ROOT cannot see the symbols, duh!
+PRODUCT_NAME = ${TARGET_NAME}
+EXECUTABLE_PREFIX=lib
+EXECUTABLE_EXTENSION=dylib
 
-// ======= ROOT 6 ==============
-ROOTSYS=/Users/maurik/root/root.git
-ROOTLIBS=-L${ROOTSYS}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTree -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lm -ldl
-CLANG_CXX_LANGUAGE_STANDARD = c++11
+DYLIB_COMPATIBILITY_VERSION=0
+DYLIB_CURRENT_VERSION=0
 
-LCIO=/data/HPSlcsim/lcio/trunk.git
-LCIOLIBDIR=${LCIO}/lib
-LCIOLIBS=-L${LCIOLIBDIR} -llcio.2.7.0
+GCC_UNROLL_LOOPS = Yes
 
 GBL=/data/HPSlcsim/GBL.r6/cpp
 GBLLIBS=-L${GBL}/lib -lGBL
 
-HEADER_SEARCH_PATHS=${ROOTSYS}/include ${LCIO}/include ${GBL}/include
-LIBRARY_SEARCH_PATHS=${ROOTSYS}/lib ${LCIOLIBDIR} ${GBL}/lib
+HEADER_SEARCH_PATHS=$(inherited) ${LCIO}/include ${GBL}/include
+LIBRARY_SEARCH_PATHS=$(inherited) ${LCIOLIBDIR} ${GBL}/lib
 
-//EVIO=/data/CLAS12/CODA/evio-4.3.1
-//EVIO_LIB_DIR=/data/CLAS12/CODA/evio-4.3.1/build/Debug
-//// EVIO_LIBS = $EVIO_LIB_DIR/libevio.a $EVIO_LIB_DIR/libevioxx.a
-//EVIO_LIBS=$EVIO_LIB_DIR/libevio-4.3.1.so
-////  EVIO=/data/HPSlcsim/CODA/evio-4.0/
+// To find the other libraries
+LD_RUNPATH_SEARCH_PATHS=${LCIOLIBDIR}
 
-PREBINDING = NO;
-GCC_WARN_ABOUT_RETURN_TYPE = YES;
-GCC_WARN_UNUSED_VARIABLE = YES;
-//GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-//GCC_SYMBOLS_PRIVATE_EXTERN = YES
-
-GCC_INLINES_ARE_PRIVATE_EXTERN=NO
-
-EXECUTABLE_EXTENSION = dylib
-LD_DYLIB_INSTALL_NAME = $(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_NAME)
-EXECUTABLE_PREFIX=lib
-
-
- // $EVIO/include
-OTHER_LDFLAGS= ${ROOTLIBS} ${LCIOLIBS}
-OTHER_CPLUSPLUSFLAGS = -pthreads -fPIC -stdlib=libc++
+OTHER_LDFLAGS= $(inherited) ${LCIOLIBS}
 
 //For Dictionary generation. This is clumsy to pass info to dict generation step
 ROOT_DICT_NAME_BASE=HpsEvent
-ROOT_DICT_HDRS_DIR=${DSTROOT}/hps-dst/include/hps_event
+//ROOT_DICT_HDRS_DIR=${DSTROOT}/hps-dst/include/hps_event
+ROOT_DICT_HDRS_DIR=/Users/maurik/Documents/Analysis/HPS_Analysis/hps-dst/include/hps_event
 ROOT_DICT_HDRS=CalorimeterHit.h Cluster.h EcalCluster.h EcalHit.h GblStripData.h GblTrack.h GblTrackData.h HpsEvent.h HpsMCParticle.h HpsParticle.h  MCParticle.h SvtHit.h SvtTrack.h
+
+DYLIB_COMPATIBILITY_VERSION=0
+DYLIB_CURRENT_VERSION=0
+

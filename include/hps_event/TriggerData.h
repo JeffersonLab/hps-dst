@@ -13,7 +13,7 @@
 //------------//
 //--- LCIO ---//
 //------------//
-#include <EVENT/LCGenericObject.h>
+#include "EVENT/LCGenericObject.h"
 
 class TriggerData { 
     

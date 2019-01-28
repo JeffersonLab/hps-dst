@@ -10,7 +10,7 @@
  *
  */
 
-#include <HpsEvent.h>
+#include "HpsEvent.h"
 
 // TODO: Add documentation
 

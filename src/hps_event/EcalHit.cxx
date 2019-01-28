@@ -7,7 +7,7 @@
  * @date: January 28, 2014
  */
 
-#include <EcalHit.h>
+#include "EcalHit.h"
 
 ClassImp(EcalHit)
 

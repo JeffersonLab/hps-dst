@@ -1,5 +1,5 @@
 
-#include <TriggerData.h>
+#include "TriggerData.h"
 
 TriggerData::TriggerData(EVENT::LCGenericObject* trigger_data)
     : time_stamp(0), 

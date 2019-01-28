@@ -31,6 +31,7 @@
 #include "EcalCluster.h"
 #include "EcalHit.h"
 #include "HpsParticle.h"
+#include "HpsMCParticle.h"
 #include "MCParticle.h"
 #include "GblTrack.h"
 #include "SvtTrack.h"

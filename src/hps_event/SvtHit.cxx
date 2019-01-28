@@ -8,7 +8,7 @@
  * @date:       February 19, 2013
  */
 
-#include <SvtHit.h>
+#include "SvtHit.h"
 
 ClassImp(SvtHit)
 
