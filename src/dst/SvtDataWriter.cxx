@@ -201,12 +201,12 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
             }
 
             // Get the collection of 3D hits associated with a LCIO Track
-            EVENT::TrackerHitVec tracker_hits = track->getTrackerHits();
+            EVENT::TrackerHitVec tracker_hits_vec = track->getTrackerHits();
 
             //  Iterate through the collection of 3D hits (TrackerHit objects)
             //  associated with a track, find the corresponding hits in the HPS
             //  event and add references to the track
-            for (auto tracker_hit : tracker_hits) { 
+            for (auto tracker_hit : tracker_hits_vec) {
                 
                 // Add a reference to the hit
                 svt_track->addHit(svt_hit_map[tracker_hit]);  

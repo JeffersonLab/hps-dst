@@ -43,9 +43,9 @@ class GblTrack : public SvtTrack {
         /**
          * Set the seed track that was refit to create this GBL track.
          *
-         * @param seed_track The seed track (SvtTrack object)
+         * @param Seed_track The seed track (SvtTrack object)
          */
-        void setSeedTrack(SvtTrack* seed_track) { this->seed_track = (TObject*) seed_track; }
+        void setSeedTrack(SvtTrack* Seed_track) { seed_track = (TObject*) Seed_track; }
 
         /**
          * Get the lambda kink value of the given layer.

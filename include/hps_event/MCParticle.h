@@ -117,7 +117,7 @@ class MCParticle : public TObject {
         /**
          * Get a daughter particle by index.
          *
-         * @param iDau The index of the daughter particle.
+         * @param daughter_index The index of the daughter particle.
          */
         MCParticle* getDaughter(int daughter_index) {
             return static_cast<MCParticle*>(daughters_->At(daughter_index));
@@ -135,7 +135,7 @@ class MCParticle : public TObject {
         /**
          * Get a parent particle by index.
          *
-         * @param iPar The index of the parent particle.
+         * @param parent_index The index of the parent particle.
          */
         MCParticle* getParent(int parent_index) {
             return static_cast<MCParticle*>(parents_->At(parent_index));

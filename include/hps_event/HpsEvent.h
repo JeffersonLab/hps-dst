@@ -120,30 +120,30 @@ class HpsEvent : public TObject {
         //---------------//
 
         /** Set the event number. */
-        void setEventNumber(int event_number){ this->event_number = event_number; };
+        void setEventNumber(int Event_number){ event_number = Event_number; };
 
         /**
          * Set the event time stamp. The event time is currently the Unix time 
          * stamp associated with the event.
          *
-         * @param event_time The Unix time stamp of the event.
+         * @param Event_time The Unix time stamp of the event.
          */
-        void setEventTime(const long event_time) { this->event_time = event_time; }; 
+        void setEventTime(const long Event_time) { event_time = Event_time; };
 
         /**
          *
          */
-        void setPair0Trigger(const int pair0_trigger) { this->pair0_trigger = pair0_trigger; };
+        void setPair0Trigger(const int Pair0_trigger) { pair0_trigger = Pair0_trigger; };
         
         /**
          *
          */
-        void setPair1Trigger(const int pair1_trigger) { this->pair1_trigger = pair1_trigger; };
+        void setPair1Trigger(const int Pair1_trigger) { pair1_trigger = Pair1_trigger; };
         
         /**
          *
          */
-        void setPulserTrigger(const int pulser_trigger) { this->pulser_trigger = pulser_trigger; };
+        void setPulserTrigger(const int Pulser_trigger) { pulser_trigger = Pulser_trigger; };
 
         /**
          * Set the event RF time.
@@ -156,66 +156,66 @@ class HpsEvent : public TObject {
         /**
          *
          */
-        void setRunNumber(int run_number){ this->run_number = run_number; };
+        void setRunNumber(int Run_number){ run_number = Run_number; };
 
         /**
          *
          */
-        void setSingle0Trigger(const int single0_trigger) { this->single0_trigger = single0_trigger; };
+        void setSingle0Trigger(const int Single0_trigger) { single0_trigger = Single0_trigger; };
 
         /**
          *
          */
-        void setSingle1Trigger(const int single1_trigger) { this->single1_trigger = single1_trigger; };
+        void setSingle1Trigger(const int Single1_trigger) { single1_trigger = Single1_trigger; };
        
         /**
          * Set the state of the SVT bias during the event i.e. was it on or 
          * off? 
          *
-         * @param svt_bias_state The state of the SVT bias. It's set to 0 if 
+         * @param Svt_bias_state The state of the SVT bias. It's set to 0 if
          *                       the bias was off or 1 if it was on.
          */ 
-        void setSvtBiasState(const int svt_bias_state) { this->svt_bias_state = svt_bias_state; }; 
+        void setSvtBiasState(const int Svt_bias_state) { svt_bias_state = Svt_bias_state; };
 
         /**
          * Set the flag indicating whether the event was affected by SVT burst
          * noise.
          *
-         * @param svt_burstmode_noise Flag indicating whether an event was affected
+         * @param Svt_burstmode_noise Flag indicating whether an event was affected
          *                        by SVT burst noise.  It's set to 0 if it was
          *                        or 1 if it wasn't.
          */
-        void setSvtBurstModeNoise(const int svt_burstmode_noise) { this->svt_burstmode_noise = svt_burstmode_noise; };
+        void setSvtBurstModeNoise(const int Svt_burstmode_noise) { svt_burstmode_noise = Svt_burstmode_noise; };
 
         /**
          * Set the flag indicating whether the SVT headers had errors.
          *
-         * @param svt_event_header_state Flag indicating whether the SVT event
+         * @param Svt_event_header_state Flag indicating whether the SVT event
          *                               headers had errors.
          *
          */
-        void setSvtEventHeaderState(const int svt_event_header_state) { this->svt_event_header_state 
-                                                                            = svt_event_header_state; };
+        void setSvtEventHeaderState(const int Svt_event_header_state) { svt_event_header_state
+                                                                            = Svt_event_header_state; };
         
         /**
          * Set the flag indicating whether the SVT latency was correct
          * during an event.
          *
-         * @param svt_latency_state Flag indicating whether the SVT latency
+         * @param Svt_latency_state Flag indicating whether the SVT latency
          *                          was correct during an event.
          */
-        void setSvtLatencyState(const int svt_latency_state) { this->svt_latency_state = svt_latency_state; }; 
+        void setSvtLatencyState(const int Svt_latency_state) { svt_latency_state = Svt_latency_state; };
 
 
         /**
          * Set the state of indicating whether the SVT was open or closed 
          * during an event. 
          *
-         * @param svt_position_state The state indicating whether the SVT was 
+         * @param Svt_position_state The state indicating whether the SVT was
          *                           open or closed. It's set to 0 if the SVT 
          *                           was open or 1 if it was closed. 
          */ 
-        void setSvtPositionState(const int svt_position_state) { this->svt_position_state = svt_position_state; }; 
+        void setSvtPositionState(const int Svt_position_state) { svt_position_state = Svt_position_state; };
   
         //--- Getters ---//
         //---------------//

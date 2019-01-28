@@ -27,9 +27,9 @@ void EcalHit::Clear(Option_t* /* options */) {
     TObject::Clear(); 
 }
 
-void EcalHit::setCrystalIndices(int index_x, int index_y) {
-    this->index_x = index_x;
-    this->index_y = index_y;
+void EcalHit::setCrystalIndices(int x_index, int y_index) {
+    this->index_x = x_index;
+    this->index_y = y_index;
 }
 
 // These will be commented out until a need for them is demonstrated.

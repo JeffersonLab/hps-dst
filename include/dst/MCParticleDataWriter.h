@@ -47,8 +47,8 @@ class MCParticleDataWriter : public DataWriter {
 		void writeData(EVENT::LCEvent*, HpsEvent*);
 
 		//
-		void setMCParticleCollectionName(std::string mc_particles_collection_name){
-			this->mc_particles_collection_name = mc_particles_collection_name;
+		void setMCParticleCollectionName(std::string Mc_particles_collection_name){
+			mc_particles_collection_name = Mc_particles_collection_name;
 		}
 
 	private:

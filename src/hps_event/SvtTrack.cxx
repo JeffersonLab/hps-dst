@@ -102,13 +102,13 @@ void SvtTrack::Clear(Option_t* /* option */) {
     n_hits = 0; 
 }
 
-void SvtTrack::setTrackParameters(double d0, double phi0, double omega,
-                                  double tan_lambda, double z0) {
-    this->d0         = d0;
-    this->phi0       = phi0;
-    this->omega      = omega;
-    this->tan_lambda = tan_lambda;
-    this->z0         = z0;
+void SvtTrack::setTrackParameters(double D0, double Phi0, double Omega,
+                                  double Tan_lambda, double Z0) {
+    this->d0         = D0;
+    this->phi0       = Phi0;
+    this->omega      = Omega;
+    this->tan_lambda = Tan_lambda;
+    this->z0         = Z0;
 }
 
 void SvtTrack::setPositionAtEcal(const double* position) { 

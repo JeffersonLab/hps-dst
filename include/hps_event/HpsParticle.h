@@ -90,44 +90,44 @@ class HpsParticle : public TObject {
         /**
          * Set the charge of the particle.
          *
-         * @param charge Particle charge
+         * @param Charge Particle charge
          */
-        void setCharge(const int charge) { this->charge = charge; };
+        void setCharge(const int Charge) { charge = Charge; };
        
         /**
          * Set the overall goodness of the PID for this particle. 
          *
-         * @param goodness_pid The goodness of the PID. 
+         * @param Goodness_pid The goodness of the PID.
          */
-        void setGoodnessOfPID(const double goodness_pid) { this->goodness_pid = goodness_pid; }; 
+        void setGoodnessOfPID(const double Goodness_pid) { this->goodness_pid = Goodness_pid; };
 
         /**
          * Set the type of this particle.
          *
-         * @param type The type of this particle
+         * @param Type The type of this particle
          */
-        void setType(const int type) { this->type = type; }; 
+        void setType(const int Type) { this->type = Type; };
 
         /**
          * Set the PDG ID of this particle.
          *
-         * @param pdg The PDG ID of this particle
+         * @param Pdg The PDG ID of this particle
          */
-        void setPDG(const int pdg) { this->pdg = pdg; }; 
+        void setPDG(const int Pdg) { this->pdg = Pdg; };
        
         /**
          * Set the energy of the particle in GeV.
          *
-         * @param energy The energy of this particle
+         * @param Energy The energy of this particle
          */
-        void setEnergy(const double energy) { this->energy = energy; };
+        void setEnergy(const double Energy) { this->energy = Energy; };
         
         /**
          * Set the invariant mass of the particle in GeV.
          *
-         * @param mass The invariant mass of the particle
+         * @param Mass The invariant mass of the particle
          */
-        void setMass(const double mass) { this->mass = mass; }; 
+        void setMass(const double Mass) { this->mass = Mass; }; 
        
         /**
          * Set the momentum of the particle in GeV.
@@ -156,9 +156,9 @@ class HpsParticle : public TObject {
         /**
          * Set the chi^2 of the vertex fit.
          *
-         * @param vtx_fit_chi2 The chi^2 of the vertex fit
+         * @param Vtx_fit_chi2 The chi^2 of the vertex fit
          */
-        void setVertexFitChi2(const double vtx_fit_chi2) { this->vtx_fit_chi2 = vtx_fit_chi2; };
+        void setVertexFitChi2(const double Vtx_fit_chi2) { this->vtx_fit_chi2 = Vtx_fit_chi2; };
         
         /**
          * Get the SVT tracks associated with this particle.
@@ -236,8 +236,7 @@ class HpsParticle : public TObject {
         /**
          * Get the corrected momentum of the paritcle in GeV.
          *
-         * @param momentum An array containing the three corrected momentum
-         *                 components of the particle.
+         * @return The corrected momentum of the particle.
          */
         std::vector<double> getCorrMomentum() const;  
 

@@ -73,7 +73,7 @@ class SvtDataWriter : public DataWriter {
          * @param hps_event  HpsEvent to which the SvtTracks and SvtHits 
          *                   will be written to 
          */        
-        void writeData(EVENT::LCEvent*, HpsEvent*);
+        void writeData(EVENT::LCEvent* lc_event, HpsEvent* hps_event);
 
     private:
 
