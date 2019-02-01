@@ -10,7 +10,7 @@
 
 //--- HPS Event ---//
 //-----------------//
-#include <HpsMCParticle.h>
+#include "HpsMCParticle.h"
 
 ClassImp(HpsMCParticle)
 

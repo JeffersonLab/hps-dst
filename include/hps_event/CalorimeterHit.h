@@ -17,19 +17,19 @@ class CalorimeterHit {
 
 		virtual ~CalorimeterHit() {}; 
 
-        /**
-         * Set the energy of the hit in GeV.
-         *
-         * @param energy : The energy of the hit
-         */
-		virtual double getEnergy() const = 0; 
+    /**
+     * Get the energy of the hit in GeV.
+     *
+     * @return The energy of the hit
+     */
+		virtual double getEnergy() const = 0;
 		
-        /**
-         * Get the energy of the hit in GeV.
-         *
-         * @return The energy of the hit
-         */
-		virtual void setEnergy(const double) = 0; 	
+    /**
+     * Set the energy of the hit in GeV.
+     *
+     * @param energy : The energy of the hit
+     */
+		virtual void setEnergy(const double energy) = 0;
 
         // Comments these out for now until a need for them is demonstrated
 		//virtual void setPosition(const double*) = 0;

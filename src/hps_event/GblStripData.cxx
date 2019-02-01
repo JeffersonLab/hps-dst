@@ -8,7 +8,7 @@
  */
 
 //-- DST --//
-#include <GblStripData.h>
+#include "GblStripData.h"
 
 //-- C++ --//
 #include <sstream>

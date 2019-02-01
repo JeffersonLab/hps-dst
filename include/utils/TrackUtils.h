@@ -18,8 +18,11 @@
 
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <IMPL/TrackImpl.h>
 #include <EVENT/TrackerHit.h>
+#pragma GCC diagnostic pop
 
 namespace TrackUtils { 
 

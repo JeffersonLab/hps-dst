@@ -34,12 +34,15 @@
 //------------//
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCIO.h>
 #include <EVENT/Track.h>
 #include <EVENT/TrackState.h>
 #include <EVENT/LCCollection.h>
 #include <IMPL/LCGenericObjectImpl.h>
 #include <UTIL/LCRelationNavigator.h>
+#pragma GCC diagnostic pop
 
 //-----------------//
 //--- HPS Event ---//
@@ -70,7 +73,7 @@ class SvtDataWriter : public DataWriter {
          * @param hps_event  HpsEvent to which the SvtTracks and SvtHits 
          *                   will be written to 
          */        
-        void writeData(EVENT::LCEvent*, HpsEvent*);
+        void writeData(EVENT::LCEvent* lc_event, HpsEvent* hps_event);
 
     private:
 

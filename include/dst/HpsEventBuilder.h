@@ -23,8 +23,11 @@
 //------------//
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCGenericObject.h>
 #include <EVENT/LCCollection.h>
+#pragma GCC diagnostic pop
 
 class HpsEventBuilder : public EventBuilder {
 
@@ -59,9 +62,9 @@ class HpsEventBuilder : public EventBuilder {
          *  Enable/disable the creation of an HpsEvent using recon files 
          *  containing ECal data only.
          *
-         *  @param ecal_only - true to write ECal data only, false otherwise
+         *  @param Ecal_only - true to write ECal data only, false otherwise
          */    
-        void writeEcalOnly(const bool ecal_only) { this->ecal_only = ecal_only; }; 
+        void writeEcalOnly(const bool Ecal_only) { ecal_only = Ecal_only; };
 
     private:
 

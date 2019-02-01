@@ -20,10 +20,12 @@
 //------------//
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <IO/LCReader.h>
 #include <IOIMPL/LCFactory.h>
 #include <EVENT/LCEvent.h>
-
+#pragma GCC diagnostic pop
 //------------//
 //--- ROOT ---//
 //------------//

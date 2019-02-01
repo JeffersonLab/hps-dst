@@ -91,39 +91,39 @@ class SvtTrack : public TObject {
         /**
          * Set the chi^2 of the fit to the track.
          *
-         * @param chi_squared The chi^2 of the fit to the track.
+         * @param Chi_squared The chi^2 of the fit to the track.
          */
-        void setChi2(const double chi_squared) { this->chi_squared = chi_squared; };
+        void setChi2(const double Chi_squared) { chi_squared = Chi_squared; };
        
         /**
          * Set the track time.
          *
-         * @param track_time The track time.
+         * @param Track_time The track time.
          */
-        void setTrackTime(const double track_time) { this->track_time = track_time; };
+        void setTrackTime(const double Track_time) { track_time = Track_time; };
 
         /**
          * Set the isolation variable of the given layer.
          *
-         * @param layer Layer number associated with the given isolation value.
-         * @param isolation The isolation variable. 
+         * @param Layer Layer number associated with the given isolation value.
+         * @param Isolation The isolation variable.
          */ 
-        void setIsolation(const int layer, const double isolation) { this->isolation[layer] = isolation; };
+        void setIsolation(const int Layer, const double Isolation) { isolation[Layer] = Isolation; };
 
         /**
          * The the volume (Top/Bottom) that the track is located in.
          *
-         * @param track_volume The track volume.
+         * @param Track_volume The track volume.
          */
-        void setTrackVolume(const int track_volume) { this->track_volume = track_volume; };
+        void setTrackVolume(const int Track_volume) { track_volume = Track_volume; };
 
         /**
          * Set the HpsParticle associated with this track.  This can be used to
          * retrieve additional track properties such as the momentum and charge.
          *
-         * @param fs_particle : Final state HpsParticle associated with this track
+         * @param Fs_particle : Final state HpsParticle associated with this track
          */
-        void setParticle(HpsParticle* fs_particle) { this->fs_particle = (TObject*) fs_particle; };
+        void setParticle(HpsParticle* Fs_particle) { fs_particle = (TObject*) Fs_particle; };
 
         /**
          * Set the extrapolated track position at the Ecal face. The 
@@ -137,16 +137,16 @@ class SvtTrack : public TObject {
          * Set the track type.  For more details, see {@link StrategyType} and
          * {@link TrackType}.
          *
-         * @param type The track type. 
+         * @param Type The track type.
          */
-        void setType(const int type) { this->type = type; }; 
+        void setType(const int Type) { type = Type; };
 
         /** 
          * Set a reference to the GblTrack associated with this seed track.
          *
-         * @param gbl_track The GBL track associated with this seed track.
+         * @param Gbl_track The GBL track associated with this seed track.
          */
-        void setGblTrack(GblTrack* gbl_track) { this->gbl_track = (TObject*) gbl_track; };
+        void setGblTrack(GblTrack* Gbl_track) { gbl_track = (TObject*) Gbl_track; };
 
         /**
          * Get the distance of closest approach to the reference point.
@@ -248,7 +248,7 @@ class SvtTrack : public TObject {
          *
          * @return The {@link HpsParticle} associated with this track.
          */
-        HpsParticle* getParticle() const { return (HpsParticle*) this->fs_particle.GetObject(); }; 
+        HpsParticle* getParticle() const { return (HpsParticle*) fs_particle.GetObject(); };
 
         /**
          * @returns True if the track is in the top SVT volume, false otherwise.
@@ -261,7 +261,7 @@ class SvtTrack : public TObject {
         bool isBottomTrack() const { return track_volume ? true : false; };
 
         /** @return The {@GblTrack} associated with this track. */
-        GblTrack* getGblTrack() const { return (GblTrack*) this->gbl_track.GetObject(); };
+        GblTrack* getGblTrack() const { return (GblTrack*) gbl_track.GetObject(); };
 
         ClassDef(SvtTrack, 2);
 

@@ -27,7 +27,7 @@ namespace EcalUtils {
 		EVENT::CalorimeterHitVec ecal_hits = cluster->getCalorimeterHits(); 
 
 		double seed_energy = 0; 
-		float seed_index = -1; 
+		int seed_index = -1; 
 		for(int ecal_hit_n = 0; ecal_hit_n < (int) ecal_hits.size(); ++ecal_hit_n){
 			if(seed_energy < ecal_hits[ecal_hit_n]->getEnergy()){
 				seed_energy = ecal_hits[ecal_hit_n]->getEnergy();
@@ -92,7 +92,7 @@ namespace EcalUtils {
 				}
 			}
 			
-			double r; 
+			double r=0;
 			for(int index = 0; index < 3; ++index){
 				hit_position[index] -= cluster_position[index]; 
 				r = hit_position[index]*hit_position[index]; 

@@ -9,7 +9,7 @@
  * 
  */
 
-#include <SvtTrack.h>
+#include "SvtTrack.h"
 
 ClassImp(SvtTrack)
 
@@ -102,13 +102,13 @@ void SvtTrack::Clear(Option_t* /* option */) {
     n_hits = 0; 
 }
 
-void SvtTrack::setTrackParameters(double d0, double phi0, double omega,
-                                  double tan_lambda, double z0) {
-    this->d0         = d0;
-    this->phi0       = phi0;
-    this->omega      = omega;
-    this->tan_lambda = tan_lambda;
-    this->z0         = z0;
+void SvtTrack::setTrackParameters(double D0, double Phi0, double Omega,
+                                  double Tan_lambda, double Z0) {
+    d0         = D0;
+    phi0       = Phi0;
+    omega      = Omega;
+    tan_lambda = Tan_lambda;
+    z0         = Z0;
 }
 
 void SvtTrack::setPositionAtEcal(const double* position) { 
@@ -119,12 +119,12 @@ void SvtTrack::setPositionAtEcal(const double* position) {
 
 int SvtTrack::getCharge() { 
     if (fs_particle == NULL) return 9999;
-    return ((HpsParticle*) this->fs_particle.GetObject())->getCharge();
+    return ((HpsParticle*) fs_particle.GetObject())->getCharge();
 }
 
 std::vector<double> SvtTrack::getMomentum() {
     if (fs_particle == NULL) return {0, 0, 0}; 
-    return ((HpsParticle*) this->fs_particle.GetObject())->getMomentum();
+    return ((HpsParticle*) fs_particle.GetObject())->getMomentum();
 }
 
 std::vector<double> SvtTrack::getPositionAtEcal() { 

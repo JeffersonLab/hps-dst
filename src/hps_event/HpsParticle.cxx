@@ -9,7 +9,7 @@
  *
  */
 
-#include <HpsParticle.h>
+#include "HpsParticle.h"
 
 ClassImp(HpsParticle)
 

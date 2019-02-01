@@ -1,5 +1,5 @@
 
-#include <TriggerData.h>
+#include "TriggerData.h"
 
 TriggerData::TriggerData(EVENT::LCGenericObject* trigger_data)
     : time_stamp(0), 
@@ -9,7 +9,7 @@ TriggerData::TriggerData(EVENT::LCGenericObject* trigger_data)
       pair1(false),
       pulser(false) { 
 
-    this->parseTriggerData(trigger_data); 
+    parseTriggerData(trigger_data);
 }
 
 void TriggerData::parseTriggerData(EVENT::LCGenericObject* trigger_data) { 

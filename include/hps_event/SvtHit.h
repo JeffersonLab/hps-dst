@@ -26,10 +26,10 @@ class SvtHit : public TObject {
 		virtual ~SvtHit();
         void Clear(Option_t *option="");
         
-        void setLayer(const int layer){ this->layer = layer; };
+        void setLayer(const int Layer){ layer = Layer; };
         void setPosition(const double*);
         void setCovarianceMatrix(std::vector<float>);
-        void setTime(const double time) { this->time = time; };
+        void setTime(const double Time) { time = Time; };
 
         double getLayer() const { return layer; };
         std::vector<double> getPosition() const;

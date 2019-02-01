@@ -26,11 +26,11 @@ class HpsMCParticle : public TObject {
 
 		void Clear(Option_t *option="");
 
-		void setPDG(const int pdg){ this->pdg = pdg; };
-		void setCharge(const int charge){ this->charge = charge; };
-		void setGeneratorStatus(const int generator_status){ this->generator_status = generator_status; };
-		void setEnergy(const double energy){ this->energy = energy; };
-		void setMass(const double mass){ this->mass = mass; };
+		void setPDG(const int Pdg){ pdg = Pdg; };
+		void setCharge(const int Charge){ charge = Charge; };
+		void setGeneratorStatus(const int Generator_status){ generator_status = Generator_status; };
+		void setEnergy(const double Energy){ energy = Energy; };
+		void setMass(const double Mass){ mass = Mass; };
 		void setMomentum(const double*);
 		void setEndpoint(const double*);
 

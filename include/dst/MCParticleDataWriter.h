@@ -20,10 +20,13 @@
 //----------//
 //   LCIO   //
 //----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCIO.h>
 #include <IMPL/LCCollectionVec.h>
 #include <IMPL/MCParticleImpl.h>
 #include <Exceptions.h>
+#pragma GCC diagnostic pop
 
 //---------------//
 //   HPS Event   //
@@ -44,8 +47,8 @@ class MCParticleDataWriter : public DataWriter {
 		void writeData(EVENT::LCEvent*, HpsEvent*);
 
 		//
-		void setMCParticleCollectionName(std::string mc_particles_collection_name){
-			this->mc_particles_collection_name = mc_particles_collection_name;
+		void setMCParticleCollectionName(std::string Mc_particles_collection_name){
+			mc_particles_collection_name = Mc_particles_collection_name;
 		}
 
 	private:

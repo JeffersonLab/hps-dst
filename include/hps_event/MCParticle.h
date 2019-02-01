@@ -117,7 +117,7 @@ class MCParticle : public TObject {
         /**
          * Get a daughter particle by index.
          *
-         * @param iDau The index of the daughter particle.
+         * @param daughter_index The index of the daughter particle.
          */
         MCParticle* getDaughter(int daughter_index) {
             return static_cast<MCParticle*>(daughters_->At(daughter_index));
@@ -135,7 +135,7 @@ class MCParticle : public TObject {
         /**
          * Get a parent particle by index.
          *
-         * @param iPar The index of the parent particle.
+         * @param parent_index The index of the parent particle.
          */
         MCParticle* getParent(int parent_index) {
             return static_cast<MCParticle*>(parents_->At(parent_index));
@@ -151,76 +151,76 @@ class MCParticle : public TObject {
         /**
          * Set the PDG code of the hit.
          *    
-         * @param pdg_id The PDG code of the hit.
+         * @param Pdg_id The PDG code of the hit.
          */
-        void setPdgID(const int pdg_id) { this->pdg_id_ = pdg_id; }
+        void setPdgID(const int Pdg_id) { pdg_id_ = Pdg_id; }
 
         /**
          * Set the generator status of the hit.
          *    
-         * @param get_status The generator status of the hit.
+         * @param Get_status The generator status of the hit.
          */
-        void setGenStatus(const int get_status) { this->gen_status_ = get_status; }
+        void setGenStatus(const int Get_status) { gen_status_ = Get_status; }
 
         /**
          * Set the global time of the particle's creation [ns].
          *    
-         * @param time The global time of the particle's creation.
+         * @param Time The global time of the particle's creation.
          */
-        void setTime(const double time) { this->time_ = time; }
+        void setTime(const double Time) { time_ = Time; }
 
         /**
          * Set the vertex of the particle [mm].
          *
-         * @param x The vertex X position.
-         * @param y The vertex Y position.
-         * @param z The vertex Z position.
+         * @param X The vertex X position.
+         * @param Y The vertex Y position.
+         * @param Z The vertex Z position.
          */
-        void setVertex(const double x, const double y, const double z) {
-            this->x_ = x;
-            this->y_ = y;
-            this->z_ = z;
+        void setVertex(const double X, const double Y, const double Z) {
+            x_ = X;
+            y_ = Y;
+            z_ = Z;
         }
 
         /**
          * Set the end point of the particle [mm].
          *
-         * @param end_x The X end point.
-         * @param end_y The Y end point.
-         * @param end_z The Z end point.
+         * @param End_x The X end point.
+         * @param End_y The Y end point.
+         * @param End_z The Z end point.
          */
-        void setEndPoint(const double end_x, const double end_y, const double end_z) {
-            this->end_x_ = end_x;
-            this->end_y_ = end_y;
-            this->end_z_ = end_z;
+        void setEndPoint(const double End_x, const double End_y, const double End_z) {
+            end_x_ = End_x;
+            end_y_ = End_y;
+            end_z_ = End_z;
         }
 
         /**
          * Set the momentum of the particle [GeV].
          *
-         * @param px The X momentum.
-         * @param py The Y momentum.
-         * @param pz The Z momentum.
+         * @param Px The X momentum.
+         * @param Py The Y momentum.
+         * @param Pz The Z momentum.
          */
-        void setMomentum(const double px, const double py, const double pz) {
-            this->px_ = px;
-            this->py_ = py;
-            this->pz_ = pz;
+        void setMomentum(const double Px, const double Py, const double Pz) {
+            px_ = Px;
+            py_ = Py;
+            pz_ = Pz;
         }
 
         /**
          * Set the mass of the particle [GeV].
          *
-         * @param mass The mass of the particle.
+         * @param Mass The mass of the particle.
          */
-        void setMass(const double mass) { this->mass_ = mass; }
+        void setMass(const double Mass) { mass_ = Mass; }
 
         /**
          * Set the charge of the particle.
          *
-         * @param charge The charge of the particle.
+         * @param Charge The charge of the particle.
          */
-        void setCharge(const double charge) { this->charge_ = charge; }
+        void setCharge(const double Charge) { charge_ = Charge; }
 
         /**
          * Add a daughter particle.

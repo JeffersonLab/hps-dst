@@ -17,7 +17,10 @@
 
 //--- LCIO ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated"  // LCIO has lots of depricated "throw" statements.
 #include <EVENT/LCEvent.h>
+#pragma GCC diagnostic pop
 
 class EventBuilder { 
 
