@@ -267,24 +267,24 @@
 		40A3CCEE1CB53C6600C1A9F0 /* dst */ = {
 			isa = PBXGroup;
 			children = (
-				40A3CD241CB53CD300C1A9F0 /* DataWriter.h */,
-				40A3CD251CB53CD300C1A9F0 /* DstUtils.h */,
-				40A3CD261CB53CD300C1A9F0 /* EcalDataWriter.h */,
-				40A3CD271CB53CD300C1A9F0 /* EventBuilder.h */,
-				40A3CD281CB53CD300C1A9F0 /* GblDataWriter.h */,
-				40A3CD291CB53CD300C1A9F0 /* HpsEventBuilder.h */,
-				40A3CD2A1CB53CD300C1A9F0 /* HpsParticleDataWriter.h */,
-				40A3CD2B1CB53CD300C1A9F0 /* MCParticleDataWriter.h */,
-				40A3CD2C1CB53CD300C1A9F0 /* SvtDataWriter.h */,
 				40A3CCEF1CB53C6600C1A9F0 /* CMakeLists.txt */,
+				40A3CD241CB53CD300C1A9F0 /* DataWriter.h */,
 				40A3CCF01CB53C6600C1A9F0 /* dst_maker.cxx */,
 				40A3CCF11CB53C6600C1A9F0 /* DstUtils.cxx */,
+				40A3CD251CB53CD300C1A9F0 /* DstUtils.h */,
 				40A3CCF21CB53C6600C1A9F0 /* EcalDataWriter.cxx */,
+				40A3CD261CB53CD300C1A9F0 /* EcalDataWriter.h */,
+				40A3CD271CB53CD300C1A9F0 /* EventBuilder.h */,
 				40A3CCF31CB53C6600C1A9F0 /* GblDataWriter.cxx */,
+				40A3CD281CB53CD300C1A9F0 /* GblDataWriter.h */,
 				40A3CCF41CB53C6600C1A9F0 /* HpsEventBuilder.cxx */,
+				40A3CD291CB53CD300C1A9F0 /* HpsEventBuilder.h */,
 				40A3CCF51CB53C6600C1A9F0 /* HpsParticleDataWriter.cxx */,
+				40A3CD2A1CB53CD300C1A9F0 /* HpsParticleDataWriter.h */,
 				40A3CCF61CB53C6600C1A9F0 /* MCParticleDataWriter.cxx */,
+				40A3CD2B1CB53CD300C1A9F0 /* MCParticleDataWriter.h */,
 				40A3CCF71CB53C6600C1A9F0 /* SvtDataWriter.cxx */,
+				40A3CD2C1CB53CD300C1A9F0 /* SvtDataWriter.h */,
 			);
 			name = dst;
 			path = ../dst;

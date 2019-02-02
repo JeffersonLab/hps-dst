@@ -37,6 +37,7 @@ class HpsParticle : public TObject {
             UC_MOLLER_CANDIDATE  = 4, 
             BSC_MOLLER_CANDIDATE = 5, 
             TC_MOLLER_CANDIDATE  = 6,
+            OTHER_ELECTRONS      = 7,
         };
 
         /** Default Constructor. */

@@ -19,7 +19,8 @@ HpsParticleDataWriter::HpsParticleDataWriter()
       bsc_v0_candidates_collection_name("BeamspotConstrainedV0Candidates"),
       bsc_moller_candidates_collection_name("BeamspotConstrainedMollerCandidates"),
       tc_v0_candidates_collection_name("TargetConstrainedV0Candidates"),
-      tc_moller_candidates_collection_name("TargetConstrainedMollerCandidates") { 
+      tc_moller_candidates_collection_name("TargetConstrainedMollerCandidates"),
+      other_electrons_collection_name("OtherElectrons"){
     
 
     // Create a mapping between a HpsParticle::ParticleType and the LCIO 
@@ -27,7 +28,7 @@ HpsParticleDataWriter::HpsParticleDataWriter()
     // FIXME: This should really be used the LCIO ReconstructedParticle type. 
     //        Doing it this way is really ugly! 
     particle_collections.insert(
-            std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::FINAL_STATE_PARTICLE, fs_particles_collection_name)); 
+            std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::FINAL_STATE_PARTICLE, fs_particles_collection_name));
     particle_collections.insert(
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::UC_V0_CANDIDATE, uc_v0_candidates_collection_name)); 
     particle_collections.insert(
@@ -40,7 +41,9 @@ HpsParticleDataWriter::HpsParticleDataWriter()
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::TC_V0_CANDIDATE, tc_v0_candidates_collection_name)); 
     particle_collections.insert(
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::TC_MOLLER_CANDIDATE, tc_moller_candidates_collection_name)); 
-}
+    particle_collections.insert(
+            std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::OTHER_ELECTRONS, other_electrons_collection_name));
+      }
 
 HpsParticleDataWriter::~HpsParticleDataWriter() {
 }
@@ -112,7 +115,9 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
     
                     // If the particle is a final state particle, add a
                     // reference from the corresponding track to the particle
-                    if (collection_type == HpsParticle::FINAL_STATE_PARTICLE) {                     
+                    if (collection_type == HpsParticle::FINAL_STATE_PARTICLE ||
+                        collection_type == HpsParticle::OTHER_ELECTRONS
+                        ) {
                         hps_track->setParticle(hps_particle); 
                     }
                     break;
@@ -136,7 +141,9 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         }
 
         // Only add vertex information if the particle is not a final state particle
-        if (collection_type == HpsParticle::FINAL_STATE_PARTICLE) {
+        if (collection_type == HpsParticle::FINAL_STATE_PARTICLE ||
+            collection_type == HpsParticle::OTHER_ELECTRONS
+            ) {
             
             // Set the PDG ID of the particle
             hps_particle->setPDG(particle->getParticleIDUsed()->getPDG());    
@@ -156,6 +163,7 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
                 
             // Loop through all of the final state particles in the HpsEvent and
             // find the one that matches the daughters associated with the particles
+            // NOTE: These *should* all be in FINAL_STATE_PARTICLES, and none in OTHER_ELECTRONS.
             for (int d_particle_n = 0; d_particle_n < hps_event->getNumberOfParticles(HpsParticle::FINAL_STATE_PARTICLE); ++d_particle_n) {
                   
                 HpsParticle* daughter_hps_particle 
