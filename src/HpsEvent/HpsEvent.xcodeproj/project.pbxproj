@@ -346,6 +346,7 @@
 				40A3CCB61CB53BEA00C1A9F0 /* Headers */,
 				40A3CCB41CB53BEA00C1A9F0 /* Sources */,
 				40A3CCB51CB53BEA00C1A9F0 /* Frameworks */,
+				4000C7FB22067C680077C690 /* ShellScript */,
 			);
 			buildRules = (
 				4071C17621FE909A00955847 /* PBXBuildRule */,
@@ -365,6 +366,7 @@
 				40D968701D0B0A1200B48D9F /* Sources */,
 				40D968711D0B0A1200B48D9F /* Frameworks */,
 				40D968721D0B0A1200B48D9F /* CopyFiles */,
+				4000C7FC22067C770077C690 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -409,6 +411,45 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4000C7FB22067C680077C690 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copy to final destination.\"\ncp -v ${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME} ${INSTALL_DIR}\ncp -v ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}Dict_rdict.pcm ${INSTALL_DIR}\n";
+			showEnvVarsInLog = 0;
+		};
+		4000C7FC22067C770077C690 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Copy to final destination.\"\ncp -v ${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME} ${INSTALL_DIR}\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		40A3CCB41CB53BEA00C1A9F0 /* Sources */ = {

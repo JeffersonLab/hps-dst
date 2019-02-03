@@ -255,7 +255,7 @@ class HpsParticle : public TObject {
          */
         double getVertexFitChi2() const { return vtx_fit_chi2; }; 
 
-        ClassDef(HpsParticle, 1);
+        ClassDef(HpsParticle, 2);
 
     private:
 
