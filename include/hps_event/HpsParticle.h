@@ -37,6 +37,7 @@ class HpsParticle : public TObject {
             UC_MOLLER_CANDIDATE  = 4, 
             BSC_MOLLER_CANDIDATE = 5, 
             TC_MOLLER_CANDIDATE  = 6,
+            OTHER_ELECTRONS      = 7,
         };
 
         /** Default Constructor. */
@@ -254,7 +255,7 @@ class HpsParticle : public TObject {
          */
         double getVertexFitChi2() const { return vtx_fit_chi2; }; 
 
-        ClassDef(HpsParticle, 1);
+        ClassDef(HpsParticle, 2);
 
     private:
 

@@ -9,7 +9,7 @@
  *
  */
 
-#include <HpsEventBuilder.h>
+#include "HpsEventBuilder.h"
 
 const std::string HpsEventBuilder::RF_HIT_COL_NAME = "RFHits";
 
