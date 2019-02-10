@@ -117,14 +117,32 @@ void SvtTrack::setPositionAtEcal(const double* position) {
     z_at_ecal = position[2];
 }
 
-int SvtTrack::getCharge() { 
-    if (fs_particle == NULL) return 9999;
-    return ((HpsParticle*) fs_particle.GetObject())->getCharge();
+int SvtTrack::getCharge() {
+    // From ReconParticleDriver line 464:
+    // Derive the charge of the particle from the track.
+    int charge = ((omega) > 0) ? 1 : (((omega) < 0) ? -1 : 0); // Compute the charge for By>0
+    return( -charge); // In HPS the By field is down, so we need to flip the charge.
 }
 
-std::vector<double> SvtTrack::getMomentum() {
-    if (fs_particle == NULL) return {0, 0, 0}; 
-    return ((HpsParticle*) fs_particle.GetObject())->getMomentum();
+std::vector<double> SvtTrack::getMomentum(double bfield) {
+    // If the bfield is given, compute the momentum from the curvature
+    // and the 3-vector from the angles.
+    // For the 2016 run the bfield was 0.5234000000000001
+    // See org.lcsim.base.BaseTrack
+    // Compute momentum from parameters and magnetic field.
+    if( abs(bfield)>0.00000001){
+        if( abs(omega)<0.0000001) return {0,0,0};  // Return zero instead of ~infinite.
+        double Pt = abs(1./omega)*bfield* 2.99792458E-4; //
+        double b0 = Pt*cos(phi0);
+        double b1 = Pt*sin(phi0);
+        double b2 = Pt*tan_lambda;
+        return {b1,b2,b0};  // Coordinate transformation.
+    }else{
+        if (fs_particle == NULL) return {0, 0, 0};
+        HpsParticle *part = (HpsParticle*) fs_particle.GetObject();
+        if( part == nullptr) return {0,0,0};
+        return part->getMomentum();
+    }
 }
 
 std::vector<double> SvtTrack::getPositionAtEcal() { 

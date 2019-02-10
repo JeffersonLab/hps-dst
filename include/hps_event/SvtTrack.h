@@ -209,7 +209,7 @@ class SvtTrack : public TObject {
         double getIsolation(const int layer) const { return isolation[layer]; }; 
 
         /**
-         * Get the charge of a the track.
+         * Get the charge of a the track by computation.
          *
          * @return The charge associated of the track.
          */
@@ -227,7 +227,7 @@ class SvtTrack : public TObject {
          *
          * @return The track momentum.
          */
-        std::vector<double> getMomentum(); 
+        std::vector<double> getMomentum(double bfield=0); 
        
         /**
          * Get the extrapolated track position at the Ecal face.
