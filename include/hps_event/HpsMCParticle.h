@@ -42,7 +42,7 @@ class HpsMCParticle : public TObject {
 		std::vector<double> getMomentum() const;
 		std::vector<double> getEndpoint() const;
 
-		ClassDef(HpsMCParticle, 1)
+		ClassDef(HpsMCParticle, 2)
 
 	private:
 

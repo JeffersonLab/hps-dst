@@ -292,7 +292,7 @@ class MCParticle : public TObject {
         /**
          * ROOT class definition.
          */
-        ClassDef(MCParticle, 1);
+        ClassDef(MCParticle, 2);
 
 }; // MCParticle
 
