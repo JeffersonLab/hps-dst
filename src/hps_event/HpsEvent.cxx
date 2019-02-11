@@ -256,23 +256,23 @@ void HpsEvent::Clear(Option_t * /*option*/) {
 
 
 SvtTrack* HpsEvent::addTrack() {
-    return (SvtTrack*) tracks->ConstructedAt(n_tracks++);
+    return (static_cast<SvtTrack*>(tracks->ConstructedAt(n_tracks++)));
 }
 
 GblTrack* HpsEvent::addGblTrack() {
-    return (GblTrack*) gbl_tracks->ConstructedAt(n_gbl_tracks++);
+    return (static_cast<GblTrack*>(gbl_tracks->ConstructedAt(n_gbl_tracks++)));
 }
 
 SvtHit* HpsEvent::addSvtHit() {
-    return (SvtHit*) svt_hits->ConstructedAt(n_svt_hits++);
+    return (static_cast<SvtHit*>(svt_hits->ConstructedAt(n_svt_hits++)));
 }
 
 EcalCluster* HpsEvent::addEcalCluster() {
-    return (EcalCluster*) ecal_clusters->ConstructedAt(n_ecal_clusters++);
+    return (static_cast<EcalCluster*>(ecal_clusters->ConstructedAt(n_ecal_clusters++)));
 }
 
 EcalHit* HpsEvent::addEcalHit() {
-    return (EcalHit*) ecal_hits->ConstructedAt(n_ecal_hits++);
+    return (static_cast<EcalHit*>(ecal_hits->ConstructedAt(n_ecal_hits++)));
 }
 
 HpsParticle* HpsEvent::addParticle(HpsParticle::ParticleType type) {
@@ -281,21 +281,21 @@ HpsParticle* HpsEvent::addParticle(HpsParticle::ParticleType type) {
     //        statement.
     switch (type) {
         case HpsParticle::FINAL_STATE_PARTICLE:
-            return (HpsParticle*) fs_particles->ConstructedAt(n_fs_particles++);
+            return (static_cast<HpsParticle*>(fs_particles->ConstructedAt(n_fs_particles++)));
         case HpsParticle::UC_V0_CANDIDATE:
-            return (HpsParticle*) uc_v0_candidates->ConstructedAt(n_uc_v0_candidates++);
+            return (static_cast<HpsParticle*>(uc_v0_candidates->ConstructedAt(n_uc_v0_candidates++)));
         case HpsParticle::BSC_V0_CANDIDATE:
-            return (HpsParticle*) bsc_v0_candidates->ConstructedAt(n_bsc_v0_candidates++);
+            return (static_cast<HpsParticle*>(bsc_v0_candidates->ConstructedAt(n_bsc_v0_candidates++)));
         case HpsParticle::TC_V0_CANDIDATE:
-            return (HpsParticle*) tc_v0_candidates->ConstructedAt(n_tc_v0_candidates++);
+            return (static_cast<HpsParticle*>(tc_v0_candidates->ConstructedAt(n_tc_v0_candidates++)));
         case HpsParticle::UC_MOLLER_CANDIDATE:
-            return (HpsParticle*) uc_moller_candidates->ConstructedAt(n_uc_moller_candidates++);
+            return (static_cast<HpsParticle*>(uc_moller_candidates->ConstructedAt(n_uc_moller_candidates++)));
         case HpsParticle::BSC_MOLLER_CANDIDATE:
-            return (HpsParticle*) bsc_moller_candidates->ConstructedAt(n_bsc_moller_candidates++);
+            return (static_cast<HpsParticle*>(bsc_moller_candidates->ConstructedAt(n_bsc_moller_candidates++)));
         case HpsParticle::TC_MOLLER_CANDIDATE:
-            return (HpsParticle*) tc_moller_candidates->ConstructedAt(n_tc_moller_candidates++);
+            return (static_cast<HpsParticle*>(tc_moller_candidates->ConstructedAt(n_tc_moller_candidates++)));
         case HpsParticle::OTHER_ELECTRONS:
-            return (HpsParticle*) other_electrons->ConstructedAt(n_other_electrons++);
+            return (static_cast<HpsParticle*>(other_electrons->ConstructedAt(n_other_electrons++)));
             
         default:
             throw std::runtime_error("[ HpsEvent ]: Particle type is invalid.");
@@ -334,23 +334,23 @@ int HpsEvent::getNumberOfParticles(HpsParticle::ParticleType type) const {
 }
 
 SvtTrack* HpsEvent::getTrack(int track_index) {
-    return (SvtTrack*) tracks->At(track_index);
+    return (static_cast<SvtTrack*>(tracks->At(track_index)));
 }
 
 GblTrack* HpsEvent::getGblTrack(int gbl_track_index) {
-    return (GblTrack*) gbl_tracks->At(gbl_track_index);
+    return (static_cast<GblTrack*>(gbl_tracks->At(gbl_track_index)));
 }
 
 SvtHit* HpsEvent::getSvtHit(int hit_index) {
-    return (SvtHit*) svt_hits->At(hit_index);
+    return (static_cast<SvtHit*>(svt_hits->At(hit_index)));
 }
 
 EcalCluster* HpsEvent::getEcalCluster(int ecal_cluster_index) const {
-    return (EcalCluster*) ecal_clusters->At(ecal_cluster_index);
+    return (static_cast<EcalCluster*>(ecal_clusters->At(ecal_cluster_index)));
 }
 
 EcalHit* HpsEvent::getEcalHit(int ecal_hit_index) {
-    return (EcalHit*) ecal_hits->At(ecal_hit_index);
+    return (static_cast<EcalHit*>(ecal_hits->At(ecal_hit_index)));
 }
 
 MCParticle* HpsEvent::getMCParticle(int mc_particle_index) {
@@ -363,21 +363,21 @@ HpsParticle* HpsEvent::getParticle(HpsParticle::ParticleType type, int particle_
     //        statement.
     switch (type) {
         case HpsParticle::FINAL_STATE_PARTICLE:
-            return (HpsParticle*) fs_particles->At(particle_index);
+            return (static_cast<HpsParticle*>(fs_particles->At(particle_index)));
         case HpsParticle::UC_V0_CANDIDATE:
-            return (HpsParticle*) uc_v0_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(uc_v0_candidates->At(particle_index)));
         case HpsParticle::BSC_V0_CANDIDATE:
-            return (HpsParticle*) bsc_v0_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(bsc_v0_candidates->At(particle_index)));
         case HpsParticle::TC_V0_CANDIDATE:
-            return (HpsParticle*) tc_v0_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(tc_v0_candidates->At(particle_index)));
         case HpsParticle::UC_MOLLER_CANDIDATE:
-            return (HpsParticle*) uc_moller_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(uc_moller_candidates->At(particle_index)));
         case HpsParticle::BSC_MOLLER_CANDIDATE:
-            return (HpsParticle*) bsc_moller_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(bsc_moller_candidates->At(particle_index)));
         case HpsParticle::TC_MOLLER_CANDIDATE:
-            return (HpsParticle*) tc_moller_candidates->At(particle_index);
+            return (static_cast<HpsParticle*>(tc_moller_candidates->At(particle_index)));
         case HpsParticle::OTHER_ELECTRONS:
-            return (HpsParticle*) other_electrons->At(particle_index);
+            return (static_cast<HpsParticle*>(other_electrons->At(particle_index)));
         default:
             throw std::runtime_error("[ HpsEvent ]: Particle type is invalid.");
     }

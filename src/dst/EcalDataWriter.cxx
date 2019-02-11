@@ -33,7 +33,7 @@ void EcalDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 
     for(int hit_n=0;hit_n<hits->getNumberOfElements();++hit_n){
         
-        calorimeter_hit = (IMPL::CalorimeterHitImpl*)hits->getElementAt(hit_n);
+        calorimeter_hit = static_cast<IMPL::CalorimeterHitImpl*>(hits->getElementAt(hit_n));
 
         // Get the unique cell id of this hit. Combine it with the integer time,
         // since a crystal can be hit more than once.
@@ -69,7 +69,7 @@ void EcalDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
     for(int cluster_n = 0; cluster_n < clusters->getNumberOfElements(); ++cluster_n) {
 
         // Get an Ecal cluster from the LCIO collection
-        cluster = (IMPL::ClusterImpl*) clusters->getElementAt(cluster_n);
+        cluster = static_cast<IMPL::ClusterImpl*>(clusters->getElementAt(cluster_n));
 
         // Add a cluster to the HPS Event
         ecal_cluster = hps_event->addEcalCluster();
@@ -89,7 +89,7 @@ void EcalDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
         for(int ecal_hit_n = 0; ecal_hit_n < (int) calorimeter_hits.size(); ++ecal_hit_n) {
 
             // Get an Ecal hit
-            calorimeter_hit = (IMPL::CalorimeterHitImpl*) calorimeter_hits[ecal_hit_n];
+            calorimeter_hit = static_cast<IMPL::CalorimeterHitImpl*>(calorimeter_hits[ecal_hit_n]);
 
             int id0=calorimeter_hit->getCellID0();
             int id1=(int)(10.0*calorimeter_hit->getTime());

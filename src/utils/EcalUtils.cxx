@@ -80,14 +80,14 @@ namespace EcalUtils {
 		// Loop over all calorimeter hits and calculate the shower moments
 		for(int hit_n = 0; hit_n < n_hits; ++hit_n){
 		
-			cluster_hit = (IMPL::CalorimeterHitImpl*) cluster_hits[hit_n];
+			cluster_hit = static_cast<IMPL::CalorimeterHitImpl*>(cluster_hits[hit_n]);
 
 			for(int rel_n = 0; rel_n < ecal_hits_relations->getNumberOfElements(); ++rel_n){
-				ecal_hits_relation = (IMPL::LCRelationImpl*) ecal_hits_relations->getElementAt(rel_n);
+				ecal_hits_relation = static_cast<IMPL::LCRelationImpl*>(ecal_hits_relations->getElementAt(rel_n));
 				if(ecal_hits_relation->getFrom() == cluster_hit){
-					hit_position[0] = ((IMPL::LCGenericObjectImpl*) ecal_hits_relation->getTo())->getDoubleVal(0);
-					hit_position[1] = ((IMPL::LCGenericObjectImpl*) ecal_hits_relation->getTo())->getDoubleVal(1);
-					hit_position[2] = ((IMPL::LCGenericObjectImpl*) ecal_hits_relation->getTo())->getDoubleVal(2);
+					hit_position[0] = static_cast<IMPL::LCGenericObjectImpl*>(ecal_hits_relation->getTo())->getDoubleVal(0);
+					hit_position[1] = static_cast<IMPL::LCGenericObjectImpl*>(ecal_hits_relation->getTo())->getDoubleVal(1);
+					hit_position[2] = static_cast<IMPL::LCGenericObjectImpl*>(ecal_hits_relation->getTo())->getDoubleVal(2);
 					break;
 				}
 			}

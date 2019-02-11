@@ -32,7 +32,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
    
     // Get the collection of 3D hits from the LCIO event. If no such collection 
     // exist, a DataNotAvailableException is thrown
-    EVENT::LCCollection* tracker_hits = (EVENT::LCCollection*) event->getCollection("RotatedHelicalTrackHits");
+    EVENT::LCCollection* tracker_hits = static_cast<EVENT::LCCollection*>(event->getCollection("RotatedHelicalTrackHits"));
 
     // Create a map from an LCIO TrackerHit to a SvtHit. This will be used when
     // assigning references to a track
@@ -44,7 +44,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
     for (int tracker_hit_n = 0; tracker_hit_n < tracker_hits->getNumberOfElements(); ++tracker_hit_n) { 
         
         // Get a 3D hit from the list of hits
-        EVENT::TrackerHit* tracker_hit = (EVENT::TrackerHit*) tracker_hits->getElementAt(tracker_hit_n);
+        EVENT::TrackerHit* tracker_hit = static_cast<EVENT::TrackerHit*>(tracker_hits->getElementAt(tracker_hit_n));
 
         // Add an SvtHit object to the HPS event
         SvtHit* svt_hit = hps_event->addSvtHit();
@@ -77,7 +77,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 
     // Get the collection of LCRelations between track data variables 
     // (TrackData) and the corresponding track.
-    EVENT::LCCollection* track_data = (EVENT::LCCollection*) event->getCollection(TRACK_DATA_REL_COL_NAME);
+    EVENT::LCCollection* track_data = static_cast<EVENT::LCCollection*>(event->getCollection(TRACK_DATA_REL_COL_NAME));
 
     // Instantiate an LCRelation navigator which will allow faster access
     // to TrackData objects  
@@ -85,7 +85,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 
     // Get the collection of LCRelations between GBL kink data variables 
     // (GBLKinkData) and the corresponding track.
-    EVENT::LCCollection* gbl_kink_data = (EVENT::LCCollection*) event->getCollection(GBL_KINK_DATA_REL_COL_NAME);
+    EVENT::LCCollection* gbl_kink_data = static_cast<EVENT::LCCollection*>(event->getCollection(GBL_KINK_DATA_REL_COL_NAME));
 
     // Instantiate an LCRelation navigator which will allow faster access 
     // to GBLKinkData object
@@ -107,7 +107,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
         for (int track_n = 0; track_n < tracks->getNumberOfElements(); ++track_n) {
         
             // Get a LCIO Track from the LCIO event
-            EVENT::Track* track = (EVENT::Track*) tracks->getElementAt(track_n);
+            EVENT::Track* track = static_cast<EVENT::Track*>(tracks->getElementAt(track_n));
 
             // Check whether a track has been refit with GBL. If so, add a 
             // Gbltrack to the HPS event.  Otherwise, just add an SvtTrack
@@ -130,7 +130,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
                 }
 
                 // Get the list GBLKinkData GenericObject associated with the LCIO Track
-                IMPL::LCGenericObjectImpl* gbl_kink_datum = (IMPL::LCGenericObjectImpl*) gbl_kink_data_list.at(0);
+                IMPL::LCGenericObjectImpl* gbl_kink_datum = static_cast<IMPL::LCGenericObjectImpl*>(gbl_kink_data_list.at(0));
 
                 // Set the lambda and phi kink values
                 for (int kink_index = 0; kink_index < gbl_kink_datum->getNDouble(); ++kink_index) { 
@@ -178,7 +178,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
             //  object.  If not, throw an exception.
             if (track_data_list.size() == 1) { 
                 // Get the TrackData GenericObject associated with the LCIO Track
-                IMPL::LCGenericObjectImpl* track_datum = (IMPL::LCGenericObjectImpl*) track_data_list.at(0);
+                IMPL::LCGenericObjectImpl* track_datum = static_cast<IMPL::LCGenericObjectImpl*>(track_data_list.at(0));
 
                 // Check that the TrackData data structure is correct.  If it's
                 // not, throw a runtime exception.   
@@ -219,7 +219,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
     delete gbl_kink_data_nav;
 
     // Get the collection of LCRelations between seed tracks and a GBL tracks.
-    EVENT::LCCollection* seed_to_gbl_relations = (EVENT::LCCollection*) event->getCollection(SEED_TO_GBL_REL_COL_NAME); 
+    EVENT::LCCollection* seed_to_gbl_relations = static_cast<EVENT::LCCollection*>(event->getCollection(SEED_TO_GBL_REL_COL_NAME));
    
     // Instantiate an LCRelation navigator which will allow faster access
     // to the seed to GBL LCRelations
@@ -240,7 +240,7 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
         }
 
         // Get the TrackData GenericObject associated with the LCIO Track
-        EVENT::Track* seed_track = (EVENT::Track*) seed_to_gbl_list.at(0);
+        EVENT::Track* seed_track = static_cast<EVENT::Track*>(seed_to_gbl_list.at(0));
 
         // Set a reference to the HpsEvent seed track
         gbl_track->setSeedTrack(track_map[seed_track]);

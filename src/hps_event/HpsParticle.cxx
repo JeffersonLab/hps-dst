@@ -10,6 +10,8 @@
  */
 
 #include "HpsParticle.h"
+#include "SvtTrack.h"
+#include "EcalCluster.h"
 
 ClassImp(HpsParticle)
 
@@ -117,11 +119,11 @@ void HpsParticle::Clear(Option_t* /* option */) {
 }
 
 void HpsParticle::addTrack(SvtTrack* svt_track) {
-    svt_tracks->Add((TObject*) svt_track);
+    svt_tracks->Add(static_cast<TObject*>(svt_track));
 }
 
 void HpsParticle::addCluster(EcalCluster* ecal_cluster) {
-    ecal_clusters->Add((TObject*) ecal_cluster);
+    ecal_clusters->Add(static_cast<TObject*>(ecal_cluster));
 }
 
 void HpsParticle::addParticle(HpsParticle* particle) {

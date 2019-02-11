@@ -45,7 +45,7 @@ class GblTrack : public SvtTrack {
          *
          * @param Seed_track The seed track (SvtTrack object)
          */
-        void setSeedTrack(SvtTrack* Seed_track) { seed_track = (TObject*) Seed_track; }
+        void setSeedTrack(SvtTrack* Seed_track) { seed_track = static_cast<TObject*>(Seed_track); }
 
         /**
          * Get the lambda kink value of the given layer.
@@ -68,7 +68,7 @@ class GblTrack : public SvtTrack {
          *
          * @return The seed track.
          */ 
-        SvtTrack* getSeedTrack() const { return (SvtTrack*) seed_track.GetObject(); }
+        SvtTrack* getSeedTrack() const { return static_cast<SvtTrack*>(seed_track.GetObject()); }
 
         ClassDef(GblTrack, 1)
 

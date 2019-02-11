@@ -95,7 +95,7 @@ class LegacyGblTrack : public TObject {
         /**
          *
          */
-        void setSeedTrack(SvtTrack* Seed_track) { seed_track = (TObject*) Seed_track; } 
+        void setSeedTrack(SvtTrack* Seed_track) { seed_track = static_cast<TObject*>(Seed_track); }
 
         /**
          *

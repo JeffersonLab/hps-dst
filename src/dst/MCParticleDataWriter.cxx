@@ -19,7 +19,7 @@ void MCParticleDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event)
 	// Get the collection of MC particles from the event. If the event doesn't have
 	// MC particles, return.
 	try {
-		mc_particles = (IMPL::LCCollectionVec*) event->getCollection(mc_particles_collection_name);
+		mc_particles = static_cast<IMPL::LCCollectionVec*>(event->getCollection(mc_particles_collection_name));
 	} catch(EVENT::DataNotAvailableException e){
 		return;
 	}

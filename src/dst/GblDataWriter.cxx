@@ -59,7 +59,7 @@ void GblDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 	IMPL::LCCollectionVec* trk_to_gbltrk_relations = NULL;
     try {
 		trk_to_gbltrk_relations 
-            = (IMPL::LCCollectionVec*) event->getCollection(trk_to_gbltrk_rel_col_name);
+            = static_cast<IMPL::LCCollectionVec*>(event->getCollection(trk_to_gbltrk_rel_col_name));
     } catch(EVENT::DataNotAvailableException e) {
         throw std::runtime_error("[ GblDataWriter ]: The collection " 
                   + trk_to_gbltrk_rel_col_name + " couldn't be found");
@@ -72,7 +72,7 @@ void GblDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 	IMPL::LCCollectionVec* gbltrk_to_gblstrip_relations = NULL;
     try {
         gbltrk_to_gblstrip_relations 
-            = (IMPL::LCCollectionVec*) event->getCollection(gbltrk_to_gblstrip_rel_col_name);
+            = static_cast<IMPL::LCCollectionVec*>(event->getCollection(gbltrk_to_gblstrip_rel_col_name));
     } catch(EVENT::DataNotAvailableException e) {
         throw std::runtime_error("[ GblDataWriter ]: The collection " 
                   + gbltrk_to_gblstrip_rel_col_name + " couldn't be found");
@@ -89,15 +89,15 @@ void GblDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 
         // Get a Track to GblTrackData relation from the event        
 		IMPL::LCRelationImpl* trk_to_gbltrk_relation 
-            = (IMPL::LCRelationImpl*) trk_to_gbltrk_relations->getElementAt(rel_n);
+            = static_cast<IMPL::LCRelationImpl*>(trk_to_gbltrk_relations->getElementAt(rel_n));
 
         
         // Get the GblTrackData from the relation
 		IMPL::LCGenericObjectImpl* gbl_track_data 
-            = (IMPL::LCGenericObjectImpl*) trk_to_gbltrk_relation->getTo();
+            = static_cast<IMPL::LCGenericObjectImpl*>(trk_to_gbltrk_relation->getTo());
 
         // Get the track related to the GblTrackData
-		IMPL::TrackImpl* track = (IMPL::TrackImpl*) trk_to_gbltrk_relation->getFrom(); 
+		IMPL::TrackImpl* track = static_cast<IMPL::TrackImpl*>(trk_to_gbltrk_relation->getFrom());
         
         // Check that the data structure is the correct length.  If it's not, throw a 
         // runtime exception.  
@@ -157,7 +157,7 @@ void GblDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
             }
 
             // Get the nth GblStrip from the collection
-            IMPL::LCGenericObjectImpl* gbl_strip = (IMPL::LCGenericObjectImpl*) gbl_strips.at(gbl_strip_n);
+            IMPL::LCGenericObjectImpl* gbl_strip = static_cast<IMPL::LCGenericObjectImpl*>(gbl_strips.at(gbl_strip_n));
 
             // Add the GblStrip to the HpsEvent
             GblStripData* hps_gbl_strip = hps_event->addGblStripData();
