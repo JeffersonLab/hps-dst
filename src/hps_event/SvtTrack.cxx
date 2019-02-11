@@ -10,6 +10,7 @@
  */
 
 #include "SvtTrack.h"
+#include "SvtHit.h"
 
 ClassImp(SvtTrack)
 
@@ -139,7 +140,7 @@ std::vector<double> SvtTrack::getMomentum(double bfield) {
         return {b1,b2,b0};  // Coordinate transformation.
     }else{
         if (fs_particle == NULL) return {0, 0, 0};
-        HpsParticle *part = (HpsParticle*) fs_particle.GetObject();
+        HpsParticle *part = static_cast<HpsParticle*>(fs_particle.GetObject());
         if( part == nullptr) return {0,0,0};
         return part->getMomentum();
     }
@@ -156,7 +157,7 @@ std::vector<double> SvtTrack::getPositionAtEcal() {
 
 void SvtTrack::addHit(SvtHit* hit) {
     ++n_hits; 
-    svt_hits->Add((TObject*) hit); 
+    svt_hits->Add(static_cast<TObject*>(hit));
 }
 
 TRefArray* SvtTrack::getSvtHits() const {

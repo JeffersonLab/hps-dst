@@ -40,7 +40,8 @@ ROOTLIBS=-L${ROOTSYS}/lib -lCore -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lTre
 
 // ==== LCIO ========
 LCIO=/data/HPS/lcio
-LCIOLIBDIR=${LCIO}/build/${CONFIGURATION}
+//LCIOLIBDIR=${LCIO}/build/${CONFIGURATION}
+LCIOLIBDIR=${LCIO}/lib
 LCIOLIBS=-L${LCIOLIBDIR} -llcio
 
 // === Always include ROOT

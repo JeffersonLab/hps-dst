@@ -56,7 +56,7 @@ void HpsParticleDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event
     for (auto const &particle_collection : particle_collections) { 
         
         // Get the collection from the event
-        EVENT::LCCollection* particles = (EVENT::LCCollection*) event->getCollection(particle_collection.second);
+        EVENT::LCCollection* particles = static_cast<EVENT::LCCollection*>(event->getCollection(particle_collection.second));
        
         // Write the particle data to the event
         writeParticleData(particle_collection.first, particles, hps_event); 
@@ -71,13 +71,13 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
 
         // Get a particle from the LCEvent
         EVENT::ReconstructedParticle* particle 
-            = (EVENT::ReconstructedParticle*) particles->getElementAt(particle_n); 
+            = static_cast<EVENT::ReconstructedParticle*>(particles->getElementAt(particle_n));
 
         // Get a particle from the HpsEvent
         HpsParticle* hps_particle = hps_event->addParticle(collection_type);
 
-        // Set the charge of the HpsParticle    
-        hps_particle->setCharge(particle->getCharge());
+        // Set the charge of the HpsParticle
+        hps_particle->setCharge(static_cast<int>(particle->getCharge()));
 
         // Set the HpsParticle type
         hps_particle->setType(particle->getType());  
@@ -151,10 +151,10 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         } 
         
         // Set the vertex position of the particle
-        hps_particle->setVertexPosition(((EVENT::Vertex*) particle->getStartVertex())->getPosition()); 
+        hps_particle->setVertexPosition(static_cast<EVENT::Vertex*>(particle->getStartVertex())->getPosition());
 
         // Set the vertex chi2
-        hps_particle->setVertexFitChi2(((EVENT::Vertex*) particle->getStartVertex())->getChi2()); 
+        hps_particle->setVertexFitChi2(static_cast<EVENT::Vertex*>(particle->getStartVertex())->getChi2());
 
         // If the particle has daughter particles, add the daughters to the HpsParticle
         
@@ -180,10 +180,10 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
                     hps_particle->addParticle(daughter_hps_particle);
                     
                     if (daughter_hps_particle->getTracks()->GetEntriesFast() != 0) 
-                        hps_particle->addTrack((SvtTrack*) daughter_hps_particle->getTracks()->At(0)); 
+                        hps_particle->addTrack(static_cast<SvtTrack*>(daughter_hps_particle->getTracks()->At(0)));
                     
                     if (daughter_hps_particle->getClusters()->GetEntriesFast() != 0) 
-                        hps_particle->addCluster((EcalCluster*) daughter_hps_particle->getClusters()->At(0)); 
+                        hps_particle->addCluster(static_cast<EcalCluster*>(daughter_hps_particle->getClusters()->At(0)));
 
                     break; 
                 }

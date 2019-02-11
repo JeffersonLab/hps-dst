@@ -84,14 +84,14 @@ void HpsEventBuilder::writeEventData(EVENT::LCEvent* lc_event, HpsEvent* hps_eve
     // Set the trigger data
     EVENT::LCCollection* trigger_data = nullptr;
     try { 
-        trigger_data = (EVENT::LCCollection*) lc_event->getCollection("TriggerBank"); 
+        trigger_data = static_cast<EVENT::LCCollection*>(lc_event->getCollection("TriggerBank"));
     } catch(EVENT::DataNotAvailableException e) {
         // It's fine if the event doesn't have a trigger bank.
     }
 
     for (int trigger_datum_n = 0; trigger_datum_n < trigger_data->getNumberOfElements(); ++trigger_datum_n) { 
        
-        EVENT::LCGenericObject* trigger_datum = (EVENT::LCGenericObject*) trigger_data->getElementAt(trigger_datum_n); 
+        EVENT::LCGenericObject* trigger_datum = static_cast<EVENT::LCGenericObject*>(trigger_data->getElementAt(trigger_datum_n));
         if (trigger_datum->getIntVal(0) == 0xe10a) { 
            
             TriggerData* hps_trigger_data = new TriggerData(trigger_datum); 
@@ -112,7 +112,7 @@ void HpsEventBuilder::writeEventData(EVENT::LCEvent* lc_event, HpsEvent* hps_eve
     //
 
     // Get the LCIO GenericObject collection containing the RF times
-    EVENT::LCCollection* rf_hits = (EVENT::LCCollection*) lc_event->getCollection(RF_HIT_COL_NAME);
+    EVENT::LCCollection* rf_hits = static_cast<EVENT::LCCollection*>(lc_event->getCollection(RF_HIT_COL_NAME));
 
     // The collection should only have a single RFHit object per event
     if (rf_hits->getNumberOfElements() > 1) { 
@@ -124,7 +124,7 @@ void HpsEventBuilder::writeEventData(EVENT::LCEvent* lc_event, HpsEvent* hps_eve
     for (int rf_hit_n = 0; rf_hit_n < rf_hits->getNumberOfElements(); ++rf_hit_n) { 
         
         // Get the RF hit from the event
-        EVENT::LCGenericObject* rf_hit = (EVENT::LCGenericObject*) rf_hits->getElementAt(rf_hit_n);
+        EVENT::LCGenericObject* rf_hit = static_cast<EVENT::LCGenericObject*>(rf_hits->getElementAt(rf_hit_n));
     
         // An RFHit GenericObject should only have two RF times
         if (rf_hit->getNDouble() != 2) { 

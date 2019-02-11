@@ -86,7 +86,7 @@ void EcalCluster::addHit(EcalHit* hit) {
     ++n_ecal_hits;
 
     if(seed_hit.GetObject() == NULL
-            || (((EcalHit*) seed_hit.GetObject())->getEnergy() < hit->getEnergy())) {
+            || (static_cast<EcalHit*>(seed_hit.GetObject())->getEnergy() < hit->getEnergy())) {
         seed_hit = hit;
         cluster_time = hit->getTime();
     }
@@ -104,7 +104,7 @@ std::vector<double> EcalCluster::getPosition() const {
 }
 
 EcalHit* EcalCluster::getSeed() const {
-    return (EcalHit*) seed_hit.GetObject();
+    return static_cast<EcalHit*>(seed_hit.GetObject());
 }
 
 TRefArray* EcalCluster::getEcalHits() const {
