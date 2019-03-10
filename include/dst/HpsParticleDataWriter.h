@@ -84,6 +84,9 @@ class HpsParticleDataWriter : public DataWriter {
         std::string uc_v0_candidates_collection_name; 
 
         /** LCIO Collection name of unconstrained V0 candidates */
+        std::string uc_vc_candidates_collection_name;
+    
+        /** LCIO Collection name of unconstrained V0 candidates */
         std::string uc_moller_candidates_collection_name; 
 
         /** LCIO Collection name of beam spot constrained V0 candidates */

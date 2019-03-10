@@ -15,6 +15,7 @@
 HpsParticleDataWriter::HpsParticleDataWriter() 
     : fs_particles_collection_name("FinalStateParticles"),
       uc_v0_candidates_collection_name("UnconstrainedV0Candidates"),
+      uc_vc_candidates_collection_name("UnconstrainedVCCandidates"),
       uc_moller_candidates_collection_name("UnconstrainedMollerCandidates"),
       bsc_v0_candidates_collection_name("BeamspotConstrainedV0Candidates"),
       bsc_moller_candidates_collection_name("BeamspotConstrainedMollerCandidates"),
@@ -32,6 +33,8 @@ HpsParticleDataWriter::HpsParticleDataWriter()
     particle_collections.insert(
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::UC_V0_CANDIDATE, uc_v0_candidates_collection_name)); 
     particle_collections.insert(
+            std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::UC_VC_CANDIDATE, uc_vc_candidates_collection_name));
+          particle_collections.insert(
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::UC_MOLLER_CANDIDATE, uc_moller_candidates_collection_name)); 
     particle_collections.insert(
             std::pair<HpsParticle::ParticleType, std::string>(HpsParticle::BSC_V0_CANDIDATE, bsc_v0_candidates_collection_name)); 

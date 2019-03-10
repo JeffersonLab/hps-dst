@@ -31,6 +31,7 @@ tracks(new TClonesArray("SvtTrack", 1000)),
 svt_hits(new TClonesArray("SvtHit", 1000)),
 uc_moller_candidates(new TClonesArray("HpsParticle", 1000)),
 uc_v0_candidates(new TClonesArray("HpsParticle", 1000)),
+uc_vc_candidates(new TClonesArray("HpsParticle", 1000)),
 other_electrons(new TClonesArray("HpsParticle", 1000)),
 rf_times{},
 event_number(0),
@@ -53,6 +54,7 @@ n_ecal_clusters(0),
 n_ecal_hits(0),
 n_fs_particles(0),
 n_uc_v0_candidates(0),
+n_uc_vc_candidates(0),
 n_uc_moller_candidates(0),
 n_bsc_v0_candidates(0),
 n_bsc_moller_candidates(0),
@@ -77,6 +79,7 @@ tracks(new TClonesArray("SvtTrack", 1000)),
 svt_hits(new TClonesArray("SvtHit", 1000)),
 uc_moller_candidates(new TClonesArray("HpsParticle", 1000)),
 uc_v0_candidates(new TClonesArray("HpsParticle", 1000)),
+uc_vc_candidates(new TClonesArray("HpsParticle", 1000)),
 other_electrons(new TClonesArray("HpsParticle", 1000)){
     
     event_number = hpsEventObj.event_number;
@@ -99,6 +102,7 @@ other_electrons(new TClonesArray("HpsParticle", 1000)){
     n_ecal_hits = hpsEventObj.n_ecal_hits;
     n_fs_particles = hpsEventObj.n_fs_particles;
     n_uc_v0_candidates = hpsEventObj.n_uc_v0_candidates;
+    n_uc_vc_candidates = hpsEventObj.n_uc_vc_candidates;
     n_uc_moller_candidates = hpsEventObj.n_uc_moller_candidates;
     n_bsc_v0_candidates = hpsEventObj.n_bsc_v0_candidates;
     n_bsc_moller_candidates = hpsEventObj.n_bsc_moller_candidates;
@@ -120,6 +124,7 @@ other_electrons(new TClonesArray("HpsParticle", 1000)){
     *svt_hits  = *hpsEventObj.svt_hits;
     *uc_moller_candidates = *hpsEventObj.uc_moller_candidates;
     *uc_v0_candidates = *hpsEventObj.uc_v0_candidates;
+    *uc_vc_candidates = *hpsEventObj.uc_vc_candidates;
     *other_electrons  = *hpsEventObj.other_electrons;
     
     memcpy(&rf_times, hpsEventObj.rf_times, 12*sizeof(double));
@@ -145,6 +150,7 @@ HpsEvent::~HpsEvent() {
     delete svt_hits;
     delete uc_moller_candidates;
     delete uc_v0_candidates;
+    delete uc_vc_candidates;
     delete other_electrons;
 }
 
@@ -175,6 +181,7 @@ HpsEvent &HpsEvent::operator=(const HpsEvent &hpsEventObj) {
     n_ecal_hits = hpsEventObj.n_ecal_hits;
     n_fs_particles = hpsEventObj.n_fs_particles;
     n_uc_v0_candidates = hpsEventObj.n_uc_v0_candidates;
+    n_uc_vc_candidates = hpsEventObj.n_uc_vc_candidates;
     n_uc_moller_candidates = hpsEventObj.n_uc_moller_candidates;
     n_bsc_v0_candidates = hpsEventObj.n_bsc_v0_candidates;
     n_bsc_moller_candidates = hpsEventObj.n_bsc_moller_candidates;
@@ -182,20 +189,6 @@ HpsEvent &HpsEvent::operator=(const HpsEvent &hpsEventObj) {
     n_tc_moller_candidates = hpsEventObj.n_tc_moller_candidates;
     n_mc_particles = hpsEventObj.n_mc_particles;
     n_other_electrons = hpsEventObj.n_other_electrons;
-    
-//    bsc_moller_candidates = new TClonesArray("HpsParticle", 1000);
-//    bsc_v0_candidates = new TClonesArray("HpsParticle", 1000);
-//    ecal_clusters = new TClonesArray("EcalCluster", 1000);
-//    ecal_hits = new TClonesArray("EcalHit", 1000);
-//    fs_particles = new TClonesArray("HpsParticle", 1000);
-//    gbl_tracks = new TClonesArray("GblTrack", 1000);
-//    mc_particles = new TClonesArray("MCParticle", 1000);
-//    tc_moller_candidates = new TClonesArray("HpsParticle", 1000);
-//    tc_v0_candidates = new TClonesArray("HpsParticle", 1000);
-//    tracks = new TClonesArray("SvtTrack", 1000);
-//    svt_hits = new TClonesArray("SvtHit", 1000);
-//    uc_moller_candidates = new TClonesArray("HpsParticle", 1000);
-//    uc_v0_candidates = new TClonesArray("HpsParticle", 1000);
     
     *bsc_moller_candidates = *hpsEventObj.bsc_moller_candidates;
     *bsc_v0_candidates = *hpsEventObj.bsc_v0_candidates;
@@ -210,6 +203,7 @@ HpsEvent &HpsEvent::operator=(const HpsEvent &hpsEventObj) {
     *svt_hits  = *hpsEventObj.svt_hits;
     *uc_moller_candidates = *hpsEventObj.uc_moller_candidates;
     *uc_v0_candidates = *hpsEventObj.uc_v0_candidates;
+    *uc_vc_candidates = *hpsEventObj.uc_vc_candidates;
     *other_electrons  = *hpsEventObj.other_electrons;
     
     memcpy(&rf_times, hpsEventObj.rf_times, 12*sizeof(double));
@@ -234,6 +228,7 @@ void HpsEvent::Clear(Option_t * /*option*/) {
     svt_hits->Clear("C");
     uc_moller_candidates->Clear("C");
     uc_v0_candidates->Clear("C");
+    uc_vc_candidates->Clear("C");
     other_electrons->Clear("C");
     
     n_ecal_clusters = 0;
@@ -243,6 +238,7 @@ void HpsEvent::Clear(Option_t * /*option*/) {
     n_svt_hits = 0;
     n_fs_particles = 0;
     n_uc_v0_candidates = 0;
+    n_uc_vc_candidates = 0;
     n_uc_moller_candidates = 0;
     n_bsc_v0_candidates = 0;
     n_bsc_moller_candidates = 0;
@@ -284,6 +280,8 @@ HpsParticle* HpsEvent::addParticle(HpsParticle::ParticleType type) {
             return (static_cast<HpsParticle*>(fs_particles->ConstructedAt(n_fs_particles++)));
         case HpsParticle::UC_V0_CANDIDATE:
             return (static_cast<HpsParticle*>(uc_v0_candidates->ConstructedAt(n_uc_v0_candidates++)));
+        case HpsParticle::UC_VC_CANDIDATE:
+            return (static_cast<HpsParticle*>(uc_vc_candidates->ConstructedAt(n_uc_vc_candidates++)));
         case HpsParticle::BSC_V0_CANDIDATE:
             return (static_cast<HpsParticle*>(bsc_v0_candidates->ConstructedAt(n_bsc_v0_candidates++)));
         case HpsParticle::TC_V0_CANDIDATE:
@@ -316,6 +314,8 @@ int HpsEvent::getNumberOfParticles(HpsParticle::ParticleType type) const {
             return n_fs_particles;
         case HpsParticle::UC_V0_CANDIDATE:
             return n_uc_v0_candidates;
+        case HpsParticle::UC_VC_CANDIDATE:
+            return n_uc_vc_candidates;
         case HpsParticle::BSC_V0_CANDIDATE:
             return n_bsc_v0_candidates;
         case HpsParticle::TC_V0_CANDIDATE:
@@ -366,6 +366,8 @@ HpsParticle* HpsEvent::getParticle(HpsParticle::ParticleType type, int particle_
             return (static_cast<HpsParticle*>(fs_particles->At(particle_index)));
         case HpsParticle::UC_V0_CANDIDATE:
             return (static_cast<HpsParticle*>(uc_v0_candidates->At(particle_index)));
+        case HpsParticle::UC_VC_CANDIDATE:
+            return (static_cast<HpsParticle*>(uc_vc_candidates->At(particle_index)));
         case HpsParticle::BSC_V0_CANDIDATE:
             return (static_cast<HpsParticle*>(bsc_v0_candidates->At(particle_index)));
         case HpsParticle::TC_V0_CANDIDATE:
