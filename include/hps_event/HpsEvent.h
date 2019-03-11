@@ -391,7 +391,7 @@ class HpsEvent : public TObject {
          */
         bool hasSvtEventHeaderErrors() const { return svt_event_header_state == 0; }; 
 
-        ClassDef(HpsEvent, 2);  
+        ClassDef(HpsEvent, 3 \\\\\\);  
 
     private:
 

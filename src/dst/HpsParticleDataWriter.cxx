@@ -15,7 +15,7 @@
 HpsParticleDataWriter::HpsParticleDataWriter() 
     : fs_particles_collection_name("FinalStateParticles"),
       uc_v0_candidates_collection_name("UnconstrainedV0Candidates"),
-      uc_vc_candidates_collection_name("UnconstrainedVCCandidates"),
+      uc_vc_candidates_collection_name("UnconstrainedVcCandidates"),
       uc_moller_candidates_collection_name("UnconstrainedMollerCandidates"),
       bsc_v0_candidates_collection_name("BeamspotConstrainedV0Candidates"),
       bsc_moller_candidates_collection_name("BeamspotConstrainedMollerCandidates"),
