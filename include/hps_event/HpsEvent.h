@@ -391,7 +391,7 @@ class HpsEvent : public TObject {
          */
         bool hasSvtEventHeaderErrors() const { return svt_event_header_state == 0; }; 
 
-        ClassDef(HpsEvent, 2);  
+        ClassDef(HpsEvent, 3 \\\\\\);  
 
     private:
 
@@ -421,6 +421,8 @@ class HpsEvent : public TObject {
         TClonesArray* uc_moller_candidates;  //->
         /** Collection of unconstrained v0 candidates */
         TClonesArray* uc_v0_candidates;      //->
+        /** Collection of unconstrained v0 candidates in same side of detector. */
+        TClonesArray* uc_vc_candidates;      //->
         /** Collection of other electrons */
         TClonesArray* other_electrons;          //->
 
@@ -506,6 +508,7 @@ class HpsEvent : public TObject {
         int n_ecal_hits;
         int n_fs_particles;
         int n_uc_v0_candidates;
+        int n_uc_vc_candidates; 
         int n_uc_moller_candidates;
         int n_bsc_v0_candidates;
         int n_bsc_moller_candidates;
