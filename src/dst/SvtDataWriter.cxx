@@ -158,6 +158,10 @@ void SvtDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
 
             // Set the SvtTrack fit chi^2
             svt_track->setChi2(track->getChi2());
+            
+            // Copy over the covariant matrix;
+            EVENT::FloatVec tmpv = track->getCovMatrix();
+            svt_track->setCovMatrix(tmpv.data());
 
             // Set the position of the extrapolated track at the Ecal face. The
             // extrapolation uses the full 3D field map.
