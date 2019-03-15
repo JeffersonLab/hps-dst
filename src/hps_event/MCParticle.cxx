@@ -19,7 +19,7 @@ MCParticle::~MCParticle() {
     delete parents_;
 }
 
-void MCParticle::Clear(Option_t *option) {
+void MCParticle::Clear(Option_t *) {
 
     TObject::Clear();
 
@@ -43,7 +43,7 @@ void MCParticle::Clear(Option_t *option) {
     charge_ = 0;
 }
 
-void MCParticle::Print(Option_t *option) const {
+void MCParticle::Print(Option_t *) const {
     std::cout << "[ MCParticle ]: " 
               << "\t Energy: " << energy_ << "\n" 
               << "\t PDG ID: " << pdg_id_ << "\n" 
