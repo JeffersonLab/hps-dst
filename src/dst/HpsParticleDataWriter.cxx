@@ -10,7 +10,7 @@
  *
  */
 
-#include <HpsParticleDataWriter.h>
+#include "HpsParticleDataWriter.h"
 
 HpsParticleDataWriter::HpsParticleDataWriter() 
     : fs_particles_collection_name("FinalStateParticles"),
@@ -59,10 +59,17 @@ void HpsParticleDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event
     for (auto const &particle_collection : particle_collections) { 
         
         // Get the collection from the event
-        EVENT::LCCollection* particles = static_cast<EVENT::LCCollection*>(event->getCollection(particle_collection.second));
-       
+        try{
+            EVENT::LCCollection* particles = static_cast<EVENT::LCCollection*>(event->getCollection(particle_collection.second));
+            writeParticleData(particle_collection.first, particles, hps_event);
+
+        }catch(const EVENT::DataNotAvailableException& e){
+            std::cout << "Exception in HpsParticleDataWriter: " << e.what() << std::endl;
+            std::cout << "Removing " <<particle_collection.second<< " from Particle list. \n";
+            particle_collections.erase(particle_collection.first);
+            
+        }
         // Write the particle data to the event
-        writeParticleData(particle_collection.first, particles, hps_event); 
     }
 }
 
