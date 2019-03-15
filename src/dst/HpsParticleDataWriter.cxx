@@ -97,6 +97,9 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         // Set the goodness of PID for the HpsParticle
         hps_particle->setGoodnessOfPID(particle->getGoodnessOfPID()); 
 
+        EVENT::FloatVec tmpvec=particle->getCovMatrix();
+        hps_particle->setCovMatrix(tmpvec.data());
+        
         // Loop through all of the tracks associated with the particle
         // and add references to the HpsParticle object.
         SvtTrack* hps_track = nullptr;
