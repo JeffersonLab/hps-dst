@@ -42,7 +42,6 @@
 		40A3CD2D1CB53CD300C1A9F0 /* DataWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD241CB53CD300C1A9F0 /* DataWriter.h */; };
 		40A3CD2E1CB53CD300C1A9F0 /* DstUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD251CB53CD300C1A9F0 /* DstUtils.h */; };
 		40A3CD2F1CB53CD300C1A9F0 /* EcalDataWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD261CB53CD300C1A9F0 /* EcalDataWriter.h */; };
-		40A3CD301CB53CD300C1A9F0 /* EventBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD271CB53CD300C1A9F0 /* EventBuilder.h */; };
 		40A3CD321CB53CD300C1A9F0 /* HpsEventBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD291CB53CD300C1A9F0 /* HpsEventBuilder.h */; };
 		40A3CD331CB53CD300C1A9F0 /* HpsParticleDataWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD2A1CB53CD300C1A9F0 /* HpsParticleDataWriter.h */; };
 		40A3CD341CB53CD300C1A9F0 /* MCParticleDataWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 40A3CD2B1CB53CD300C1A9F0 /* MCParticleDataWriter.h */; };
@@ -153,7 +152,6 @@
 		40A3CD241CB53CD300C1A9F0 /* DataWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = DataWriter.h; path = ../../include/dst/DataWriter.h; sourceTree = "<group>"; tabWidth = 4; };
 		40A3CD251CB53CD300C1A9F0 /* DstUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = DstUtils.h; path = ../../include/dst/DstUtils.h; sourceTree = "<group>"; tabWidth = 4; };
 		40A3CD261CB53CD300C1A9F0 /* EcalDataWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = EcalDataWriter.h; path = ../../include/dst/EcalDataWriter.h; sourceTree = "<group>"; tabWidth = 4; };
-		40A3CD271CB53CD300C1A9F0 /* EventBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = EventBuilder.h; path = ../../include/dst/EventBuilder.h; sourceTree = "<group>"; tabWidth = 4; };
 		40A3CD281CB53CD300C1A9F0 /* GblDataWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = GblDataWriter.h; path = ../../include/dst/GblDataWriter.h; sourceTree = "<group>"; tabWidth = 4; };
 		40A3CD291CB53CD300C1A9F0 /* HpsEventBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = HpsEventBuilder.h; path = ../../include/dst/HpsEventBuilder.h; sourceTree = "<group>"; tabWidth = 4; };
 		40A3CD2A1CB53CD300C1A9F0 /* HpsParticleDataWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; name = HpsParticleDataWriter.h; path = ../../include/dst/HpsParticleDataWriter.h; sourceTree = "<group>"; tabWidth = 4; };
@@ -278,7 +276,6 @@
 				40A3CD251CB53CD300C1A9F0 /* DstUtils.h */,
 				40A3CCF21CB53C6600C1A9F0 /* EcalDataWriter.cxx */,
 				40A3CD261CB53CD300C1A9F0 /* EcalDataWriter.h */,
-				40A3CD271CB53CD300C1A9F0 /* EventBuilder.h */,
 				40A3CCF31CB53C6600C1A9F0 /* GblDataWriter.cxx */,
 				40A3CD281CB53CD300C1A9F0 /* GblDataWriter.h */,
 				40A3CCF41CB53C6600C1A9F0 /* HpsEventBuilder.cxx */,
@@ -332,7 +329,6 @@
 				40A3CD2F1CB53CD300C1A9F0 /* EcalDataWriter.h in Headers */,
 				40A3CD341CB53CD300C1A9F0 /* MCParticleDataWriter.h in Headers */,
 				40A3CD191CB53CB800C1A9F0 /* HpsEvent.h in Headers */,
-				40A3CD301CB53CD300C1A9F0 /* EventBuilder.h in Headers */,
 				40A3CD491CB6EAF600C1A9F0 /* EcalUtils.h in Headers */,
 				40A3CD131CB53CB800C1A9F0 /* Cluster.h in Headers */,
 				40A3CD1C1CB53CB800C1A9F0 /* HpsParticle.h in Headers */,
@@ -525,7 +521,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -564,7 +560,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
