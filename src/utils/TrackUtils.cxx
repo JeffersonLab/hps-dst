@@ -23,51 +23,50 @@ namespace TrackUtils {
 
     double getY0(IMPL::TrackImpl* track){
         return getDoca(track)*cos(getPhi0(track)); 
-    };
+    }
 
     double getR(IMPL::TrackImpl* track){
         return 1.0/track->getOmega(); 
-    }; 
+    }
     
     double getDoca(IMPL::TrackImpl* track){
         return track->getD0();     
-    };
+    }
     
     double getPhi0(IMPL::TrackImpl* track){
         return track->getPhi(); 
-    };
+    }
 
     double getPhi(IMPL::TrackImpl* track, std::vector<double> position){ 
           double x = sin(getPhi0(track)) - (1/getR(track))*(position[0] - getX0(track)); 
           double y = cos(getPhi0(track)) + (1/getR(track))*(position[1] - getY0(track)); 
     
         return atan2(x, y); 
-    }; 
+    }
     
     double getZ0(IMPL::TrackImpl* track){
-        return track->getZ0(); 
-    
-    }; 
+        return track->getZ0();
+    }
     
     double getTanLambda(IMPL::TrackImpl* track){
         return track->getTanLambda(); 
-    }; 
+    }
     
     double getSinTheta(IMPL::TrackImpl* track){
        return 1/sqrt(1 + pow(getTanLambda(track), 2));  
-    }; 
+    }
     
     double getCosTheta(IMPL::TrackImpl* track){
         return getTanLambda(track)/sqrt(1 + pow(getTanLambda(track), 2)); 
-    }; 
+    }
 
     double getXc(IMPL::TrackImpl* track){ 
         return (getR(track) - getDoca(track))*sin(getPhi0(track)); 
-    };
+    }
 
     double getYc(IMPL::TrackImpl* track){
         return -(getR(track) - getDoca(track))*cos(getPhi0(track));   
-    };
+    }
 
 	std::vector<double> getMomentumVector(IMPL::TrackImpl* track, double b_field){
 		std::vector<double> p(3,0); 
@@ -78,7 +77,7 @@ namespace TrackUtils {
 		p[2] = pt*getTanLambda(track); 		
 		
 		return p; 	
-	};
+	}
 
 	double getMomentum(IMPL::TrackImpl* track, double b_field){
 	
@@ -90,13 +89,13 @@ namespace TrackUtils {
         } 
 
 		return sqrt(p_sum); 
-	};
+	}
 
 	int getCharge(IMPL::TrackImpl* track){
 		int charge; 
 		track->getOmega() > 0 ? charge = 1 : charge = -1; 
 		return charge; 		
-	};
+	}
 
 	int getLayer(EVENT::TrackerHit* tracker_hit){
 
