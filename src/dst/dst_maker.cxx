@@ -25,13 +25,13 @@
 #include <IO/LCReader.h>
 #include <IOIMPL/LCFactory.h>
 #include <EVENT/LCEvent.h>
-#pragma GCC diagnostic pop
 //------------//
 //--- ROOT ---//
 //------------//
+#pragma GCC diagnostic ignored "-Wconversion"  // ROOT has lost of conversions losing precision.
 #include <TTree.h>
 #include <TFile.h>
-
+#pragma GCC diagnostic pop
 //-----------//
 //--- DST ---//
 //-----------//

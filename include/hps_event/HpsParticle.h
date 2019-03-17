@@ -15,11 +15,14 @@
 //------------//
 //--- ROOT ---//
 //------------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 #include <TObject.h>
 #include <TClonesArray.h>
 #include <TRef.h>
 #include <TRefArray.h>
 #include <TMatrixD.h>
+#pragma GCC diagnostic pop
 
 /** Forward declarations of HPS event classes */
 class SvtTrack;

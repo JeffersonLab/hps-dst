@@ -15,8 +15,11 @@
 #include <iostream>
 
 //-- ROOT ---//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 #include <TObject.h>
 #include <TClonesArray.h>
+#pragma GCC diagnostic pop
 
 class SvtHit : public TObject { 
 

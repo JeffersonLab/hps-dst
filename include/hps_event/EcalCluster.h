@@ -18,10 +18,13 @@
 //-----------//
 //-- ROOT ---//
 //-----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 #include <TObject.h>
 #include <TClonesArray.h>
 #include <TRefArray.h>
 #include <TRef.h>
+#pragma GCC diagnostic pop
 
 //-----------------//
 //--- HPS Event ---//

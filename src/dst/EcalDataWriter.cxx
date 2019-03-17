@@ -105,8 +105,7 @@ void EcalDataWriter::writeData(EVENT::LCEvent* event, HpsEvent* hps_event) {
     }
     
     // Get the collection of Ecal clusters from the event
-    EVENT::LCCollection* uncor_clusters
-    = static_cast<EVENT::LCCollection*>(event->getCollection("EcalClusters"));
+    EVENT::LCCollection* uncor_clusters = static_cast<EVENT::LCCollection*>(event->getCollection("EcalClusters"));
     
     // Loop over all clusters and fill the event
     for(int cluster_n = 0; cluster_n < uncor_clusters->getNumberOfElements(); ++cluster_n) {

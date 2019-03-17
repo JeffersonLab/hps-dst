@@ -77,7 +77,7 @@ endif()
 
 
 # Set additional compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -std=c++11")
 
 # Set the output directories of the binaries, static and shared libraries
 

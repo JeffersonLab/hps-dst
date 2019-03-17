@@ -22,8 +22,11 @@
 //----------//
 //   ROOT   //
 //----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 #include <TObject.h>
 #include <TClonesArray.h>
+#pragma GCC diagnostic pop
 
 //---------------//
 //   HPS Event   //
@@ -229,6 +232,7 @@ public:
     
     /** */
     EcalCluster*   getEcalCluster(int) const;
+    EcalCluster*   getUncorEcalCluster(int) const;
     
     /** */
     EcalHit*       getEcalHit(int);
@@ -254,6 +258,7 @@ public:
     
     /** */
     int getNumberOfEcalClusters()   const  { return n_ecal_clusters; };
+    int getNumberOfUncorEcalClusters()   const  { return n_uncor_ecal_clusters; };
     
     
     /**
@@ -403,37 +408,37 @@ public:
 private:
     
     /** Collection of beam spot constrained Moller candidates */
-    TClonesArray* bsc_moller_candidates; //->
+    TClonesArray* bsc_moller_candidates=new TClonesArray("HpsParticle", 1000); //->
     /** Collection of beam spot constrained v0 candidates */
-    TClonesArray* bsc_v0_candidates;     //->
+    TClonesArray* bsc_v0_candidates=new TClonesArray("HpsParticle", 1000);     //->
     /** Collection of Ecal clusters */
-    TClonesArray* ecal_clusters;         //->    Corrected Ecal Clusters
-    TClonesArray* uncor_ecal_clusters;   //->    Uncorrected Ecal Clusters
+    TClonesArray* ecal_clusters=new TClonesArray("EcalCluster", 1000);         //->    Corrected Ecal Clusters
+    TClonesArray* uncor_ecal_clusters=new TClonesArray("EcalCluster", 1000);   //->    Uncorrected Ecal Clusters
     
     /** Collection of Ecal hits */
-    TClonesArray* ecal_hits;             //->
+    TClonesArray* ecal_hits=new TClonesArray("EcalHit", 1000);             //->
     /** Collection of final state particles */
-    TClonesArray* fs_particles;          //->
+    TClonesArray* fs_particles=new TClonesArray("HpsParticle", 1000);      //->
     /** Collection of GBL tracks */
-    TClonesArray* gbl_tracks;            //->
+    TClonesArray* gbl_tracks=new TClonesArray("GblTrack", 1000);            //->
     /** Collection of Monte Carlo particles */
-    TClonesArray* mc_particles;          //->
+    TClonesArray* mc_particles=new TClonesArray("MCParticle", 1000);          //->
     /** Collection of target constrained Moller candidates */
-    TClonesArray* tc_moller_candidates;  //->
+    TClonesArray* tc_moller_candidates=new TClonesArray("HpsParticle", 1000);  //->
     /** Collection of target constrained v0 candidates */
-    TClonesArray* tc_v0_candidates;      //->
+    TClonesArray* tc_v0_candidates=new TClonesArray("HpsParticle", 1000);      //->
     /** Collection of SVT tracks */
-    TClonesArray* tracks;                //->
+    TClonesArray* tracks=new TClonesArray("SvtTrack", 1000);                //->
     /** Collection of SVT 3D hits */
-    TClonesArray* svt_hits;              //->
+    TClonesArray* svt_hits=new TClonesArray("SvtHit", 1000);              //->
     /** Collection of unconstrained Moller candidates */
-    TClonesArray* uc_moller_candidates;  //->
+    TClonesArray* uc_moller_candidates=new TClonesArray("HpsParticle", 1000);  //->
     /** Collection of unconstrained v0 candidates */
-    TClonesArray* uc_v0_candidates;      //->
+    TClonesArray* uc_v0_candidates=new TClonesArray("HpsParticle", 1000);      //->
     /** Collection of unconstrained v0 candidates in same side of detector. */
-    TClonesArray* uc_vc_candidates;      //->
+    TClonesArray* uc_vc_candidates=new TClonesArray("HpsParticle", 1000);      //->
     /** Collection of other electrons */
-    TClonesArray* other_electrons;          //->
+    TClonesArray* other_electrons=new TClonesArray("HpsParticle", 1000);          //->
     
     //-- Event information --//
     //-----------------------//

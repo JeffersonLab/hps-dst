@@ -69,7 +69,7 @@ namespace EcalUtils {
 
 		// Get the calorimeter hits associated with the cluster
 		EVENT::CalorimeterHitVec cluster_hits = cluster->getCalorimeterHits();
-		int n_hits = cluster_hits.size();
+		int n_hits = (int)cluster_hits.size();
 
 		int n_moments = 3;
 		std::vector<double> moments(3,0);

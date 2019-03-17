@@ -19,8 +19,11 @@
 //----------//
 //   ROOT   //
 //----------//
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
 #include "TObject.h"
 #include "TRefArray.h"
+#pragma GCC diagnostic pop
 
 class MCParticle : public TObject {
 
