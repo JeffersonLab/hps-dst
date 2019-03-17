@@ -13,7 +13,7 @@
 //-----------//
 //--- DST ---//
 //-----------//
-#include "EventBuilder.h"
+#include "HpsEvent.h"
 #include "SvtDataWriter.h"
 #include "EcalDataWriter.h"
 #include "MCParticleDataWriter.h"
@@ -29,7 +29,7 @@
 #include <EVENT/LCCollection.h>
 #pragma GCC diagnostic pop
 
-class HpsEventBuilder : public EventBuilder {
+class HpsEventBuilder {
 
     public: 
 
