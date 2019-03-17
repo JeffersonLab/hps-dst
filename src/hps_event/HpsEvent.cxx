@@ -32,36 +32,8 @@ svt_hits(new TClonesArray("SvtHit", 1000)),
 uc_moller_candidates(new TClonesArray("HpsParticle", 1000)),
 uc_v0_candidates(new TClonesArray("HpsParticle", 1000)),
 uc_vc_candidates(new TClonesArray("HpsParticle", 1000)),
-other_electrons(new TClonesArray("HpsParticle", 1000)),
-rf_times{},
-event_number(0),
-event_time(0),
-pair0_trigger(0),
-pair1_trigger(0),
-pulser_trigger(0),
-run_number(0),
-single0_trigger(0),
-single1_trigger(0),
-svt_bias_state(0),
-svt_burstmode_noise(0),
-svt_event_header_state(0),
-svt_latency_state(0),
-svt_position_state(0),
-n_tracks(0),
-n_gbl_tracks(0),
-n_svt_hits(0),
-n_ecal_clusters(0),
-n_ecal_hits(0),
-n_fs_particles(0),
-n_uc_v0_candidates(0),
-n_uc_vc_candidates(0),
-n_uc_moller_candidates(0),
-n_bsc_v0_candidates(0),
-n_bsc_moller_candidates(0),
-n_tc_v0_candidates(0),
-n_tc_moller_candidates(0),
-n_mc_particles(0),
-n_other_electrons(0){
+other_electrons(new TClonesArray("HpsParticle", 1000))
+{
 }
 
 HpsEvent::HpsEvent(const HpsEvent &hpsEventObj):
@@ -303,7 +275,6 @@ HpsParticle* HpsEvent::addParticle(HpsParticle::ParticleType type) {
 MCParticle* HpsEvent::addMCParticle() {
     return static_cast<MCParticle*>(mc_particles->ConstructedAt(n_mc_particles++));
 }
-
 
 int HpsEvent::getNumberOfParticles(HpsParticle::ParticleType type) const {
     
