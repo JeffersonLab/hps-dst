@@ -111,7 +111,11 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         // and add references to the HpsParticle object.
         SvtTrack* hps_track = nullptr;
         for (auto const &track : particle->getTracks()) { 
-             
+            
+            if(track == nullptr){
+                std::cout << "WARNING: Invalid track in collection number: " << collection_type << std::endl;
+                break;
+            }
             // Loop through all of the tracks in the HpsEvent and find the one
             // that matches the track associated with the particle
             for (int track_n = 0; track_n < hps_event->getNumberOfTracks(); ++track_n) {
@@ -139,7 +143,11 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         }   
 
         for (auto const &cluster : particle->getClusters()) { 
-                
+            
+            if(cluster == nullptr){
+                std::cout << "WARNING: Invalid cluster in collection number: " << collection_type << std::endl;
+                break;
+            }
             // Loop through all of the clusters in the HpsEvent and find the one 
             // that matches the cluster associated with the particle
             for (int cluster_n = 0; cluster_n < hps_event->getNumberOfEcalClusters(); ++cluster_n) {
@@ -173,7 +181,11 @@ void HpsParticleDataWriter::writeParticleData(HpsParticle::ParticleType collecti
         
         // Loop through all of the daughter particles associated with the particle
         for (auto const &daughter : particle->getParticles()) { 
-                
+            
+            if(daughter == nullptr){
+                std::cout << "WARNING: Invalid daughter particle in collection number: " << collection_type << std::endl;
+                break;
+            }
             // Loop through all of the final state particles in the HpsEvent and
             // find the one that matches the daughters associated with the particles
             // NOTE: These *should* all be in FINAL_STATE_PARTICLES, and none in OTHER_ELECTRONS.

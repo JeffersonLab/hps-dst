@@ -51,20 +51,22 @@ int main(int argc, char **argv) {
     clock_t initial_time = clock();
 
     string dst_file_name = "";  
-    int total_events = -1;  
+    int total_events = -1;
+    int debug_level = 0;
     bool ecal_only = false;
     // Parse any command line arguments.  If there are no valid command line 
     // arguments passed, print the usage and exit.  
     static struct option long_options[] = { 
         {"output",        required_argument, 0, 'o' },
         {"total_events",  required_argument, 0, 'n' },
+        {"debug",         required_argument, 0, 'd' },
         {"ecal_only",     no_argument,       0, 'e' },
         {"help",          no_argument,       0, 'h' },
         {0, 0, 0, 0}
     };
     int option_index = 0; 
     int option_char = 0; 
-    while ((option_char = getopt_long(argc, argv, "o:n:b:geh", long_options, &option_index)) != -1) {
+    while ((option_char = getopt_long(argc, argv, "o:n:b:d:geh", long_options, &option_index)) != -1) {
         switch (option_char) {
             case 'o': 
                 dst_file_name = optarg;
@@ -72,6 +74,9 @@ int main(int argc, char **argv) {
             case 'n': 
                 total_events = atoi(optarg); 
                 break; 
+            case 'd':
+                debug_level = atoi(optarg);
+                break;
             case 'e':
                 ecal_only = true;
                 break;    
@@ -114,7 +119,9 @@ int main(int argc, char **argv) {
 
     // Instntiate the event builder which will be used to create HpsEvent 
     // objects
-    HpsEventBuilder* event_builder = new HpsEventBuilder(); 
+    HpsEventBuilder* event_builder = new HpsEventBuilder();
+    event_builder->setDebug(debug_level);
+    
     // Set whether the event builder should only write Ecal data
     event_builder->writeEcalOnly(ecal_only);    
     
@@ -134,6 +141,9 @@ int main(int argc, char **argv) {
             ++event_number; 
             if ((event_number - 1) == total_events) break; 
 
+            if(debug_level>0){
+                cout <<"[ DST MAKER ]: Processing: " << event_number <<" event number= " << event->getEventNumber() << endl;
+            }
             // Print the event number every 1000 events
             if (event_number%1000 == 0 ) {
                 cout << "[ DST MAKER ]: Processing event number: " << event_number << endl;
