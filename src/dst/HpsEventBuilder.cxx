@@ -81,52 +81,60 @@ void HpsEventBuilder::writeEventData(EVENT::LCEvent* lc_event, HpsEvent* hps_eve
         // It's fine if the event doesn't have a trigger bank.
     }
     
-    for (int trigger_datum_n = 0; trigger_datum_n < trigger_data->getNumberOfElements(); ++trigger_datum_n) { 
-        
-        EVENT::LCGenericObject* trigger_datum = static_cast<EVENT::LCGenericObject*>(trigger_data->getElementAt(trigger_datum_n));
-        if (trigger_datum->getIntVal(0) == 0xe10a) { 
+    if(trigger_data){
+        for (int trigger_datum_n = 0; trigger_datum_n < trigger_data->getNumberOfElements(); ++trigger_datum_n) { 
             
-            TriggerData* hps_trigger_data = new TriggerData(trigger_datum); 
-            hps_event->setSingle0Trigger((int) hps_trigger_data->isSingle0Trigger());
-            hps_event->setSingle1Trigger((int) hps_trigger_data->isSingle1Trigger());
-            hps_event->setPair0Trigger((int) hps_trigger_data->isPair0Trigger());
-            hps_event->setPair1Trigger((int) hps_trigger_data->isPair1Trigger());
-            hps_event->setPulserTrigger((int) hps_trigger_data->isPulserTrigger());
-            
-            delete hps_trigger_data;
-            hps_trigger_data = NULL;
-            break;
+            EVENT::LCGenericObject* trigger_datum = static_cast<EVENT::LCGenericObject*>(trigger_data->getElementAt(trigger_datum_n));
+            if (trigger_datum->getIntVal(0) == 0xe10a) { 
+                
+                TriggerData* hps_trigger_data = new TriggerData(trigger_datum); 
+                hps_event->setSingle0Trigger((int) hps_trigger_data->isSingle0Trigger());
+                hps_event->setSingle1Trigger((int) hps_trigger_data->isSingle1Trigger());
+                hps_event->setPair0Trigger((int) hps_trigger_data->isPair0Trigger());
+                hps_event->setPair1Trigger((int) hps_trigger_data->isPair1Trigger());
+                hps_event->setPulserTrigger((int) hps_trigger_data->isPulserTrigger());
+                
+                delete hps_trigger_data;
+                hps_trigger_data = NULL;
+                break;
+            }
         }
     }
-    
     //
     // Write the RF time to the event
     //
     
-    // Get the LCIO GenericObject collection containing the RF times
-    EVENT::LCCollection* rf_hits = static_cast<EVENT::LCCollection*>(lc_event->getCollection(RF_HIT_COL_NAME));
-    
-    // The collection should only have a single RFHit object per event
-    if (rf_hits->getNumberOfElements() > 1) { 
-        throw std::runtime_error("[ HpsEventBuilder ]: The collection " + RF_HIT_COL_NAME + 
-                                 " doesn't have the expected number of elements."); 
+    EVENT::LCCollection* rf_hits =nullptr;
+    try {
+        // Get the LCIO GenericObject collection containing the RF times
+        rf_hits =static_cast<EVENT::LCCollection*>(lc_event->getCollection(RF_HIT_COL_NAME));
+    } catch(EVENT::DataNotAvailableException e) {
+        // It's fine if the event doesn't have a trigger bank. Most likely MC data.
     }
     
-    // Loop over all the RF hits in the event and write them to the DST
-    for (int rf_hit_n = 0; rf_hit_n < rf_hits->getNumberOfElements(); ++rf_hit_n) { 
-        
-        // Get the RF hit from the event
-        EVENT::LCGenericObject* rf_hit = static_cast<EVENT::LCGenericObject*>(rf_hits->getElementAt(rf_hit_n));
-        
-        // An RFHit GenericObject should only have two RF times
-        if (rf_hit->getNDouble() != 2) { 
+    if(rf_hits){
+        // The collection should only have a single RFHit object per event
+        if (rf_hits->getNumberOfElements() > 1) { 
             throw std::runtime_error("[ HpsEventBuilder ]: The collection " + RF_HIT_COL_NAME + 
-                                     " has the wrong structure."); 
+                                     " doesn't have the expected number of elements."); 
         }
         
-        // Write the RF times to the event
-        for (int rf_hit_channel = 0; rf_hit_channel < rf_hit->getNDouble(); ++rf_hit_channel) { 
-            hps_event->setRfTime(rf_hit_channel, rf_hit->getDoubleVal(rf_hit_channel));  
+        // Loop over all the RF hits in the event and write them to the DST
+        for (int rf_hit_n = 0; rf_hit_n < rf_hits->getNumberOfElements(); ++rf_hit_n) { 
+            
+            // Get the RF hit from the event
+            EVENT::LCGenericObject* rf_hit = static_cast<EVENT::LCGenericObject*>(rf_hits->getElementAt(rf_hit_n));
+            
+            // An RFHit GenericObject should only have two RF times
+            if (rf_hit->getNDouble() != 2) { 
+                throw std::runtime_error("[ HpsEventBuilder ]: The collection " + RF_HIT_COL_NAME + 
+                                         " has the wrong structure."); 
+            }
+            
+            // Write the RF times to the event
+            for (int rf_hit_channel = 0; rf_hit_channel < rf_hit->getNDouble(); ++rf_hit_channel) { 
+                hps_event->setRfTime(rf_hit_channel, rf_hit->getDoubleVal(rf_hit_channel));  
+            }
         }
     }
 }
