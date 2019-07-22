@@ -169,16 +169,3 @@ std::vector<double> HpsParticle::getMomentum() const {
     return momentum;
 }
 
-std::vector<double> HpsParticle::getCorrMomentum() const {
-    std::vector<double> momentum {px, py, pz};
-    return momentum;
-}
-
-std::vector<double> HpsParticle::getVertexPosition() const {
-    std::vector<double> vertex(3,0); 
-    vertex[0] = vtx_x; 
-    vertex[1] = vtx_y; 
-    vertex[2] = vtx_z; 
-    return vertex; 
-}
-

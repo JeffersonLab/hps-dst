@@ -209,9 +209,7 @@ public:
      * @return 1/2 covariant matrix in a vector<float> of 15 entries.
      */
     std::vector<float> getCovariantMatrix() const{
-        std::vector<float> retvec(sizeof(covmatrix));
-        retvec.assign(covmatrix,covmatrix+sizeof(covmatrix));    // Copy data into vector.
-        return(retvec);                           // C++11 returns matrix by move.
+        return(covmatrix);                           // C++11 returns matrix by move.
     };
     
     /**
@@ -236,6 +234,7 @@ public:
      * Note that this is MUCH less efficient than getCovariantMatrix or getCovariantMatrix(i,j)
      *
      * @return 1/2 covariant matrix in a 5x5 TMatrix.
+     * This copies the matrix twice! (ouch)
      */
     TMatrixD getCovariantTMatrix() const{
         double data[16];
@@ -247,7 +246,7 @@ public:
                 k++;
             }
         TMatrixD retmat(4,4,data);
-        return(retmat);        // This copies the matrix twice! (ouch)
+        return(retmat);
     };
 
     /**
@@ -297,14 +296,18 @@ public:
      *
      * @return The corrected momentum of the particle.
      */
-    std::vector<double> getCorrMomentum() const;
+    std::vector<double> getCorrMomentum() const {
+            return {px, py, pz};
+    };
     
     /**
      * Get the vertex position of the particle.
      *
      * @return The vertex position of the particle
      */
-    std::vector<double> getVertexPosition() const;
+    std::vector<double> getVertexPosition() const{
+            return {vtx_x,vtx_y,vtx_z};
+    };
     
     /**
      * Get the chi^2 of the vertex fit.
@@ -378,7 +381,7 @@ private:
     double vtx_fit_chi2;
     
     /** The 1/2 Covariant Matrix. This is the lower 1/2. **/
-    float covmatrix[10];
+    std::vector<float> covmatrix = std::vector<float>(10,0);
     
     /** The energy of the particle in GeV */
     double energy;
