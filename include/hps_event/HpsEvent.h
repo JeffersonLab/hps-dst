@@ -6,7 +6,6 @@
  * @author Omar Moreno <omoreno1@ucsc.edu>
  *         Santa Cruz Institute for Particle Physics
  *         University of California, Santa Cruz
- * @author Maurik Holtrop <maurik.holtrop@unh.edu>
  * @date February 19, 2013
  *
  */

@@ -34,10 +34,8 @@ z_at_ecal(svtTrackObj.x_at_ecal) {
     *svt_hits = *svtTrackObj.svt_hits;
     fs_particle = svtTrackObj.fs_particle;
     gbl_track = svtTrackObj.gbl_track;
-    isolation = svtTrackObj.isolation;
-    //  std::copy(svtTrackObj.isolation.begin(), svtTrackObj.isolation.end(),
-    //            std::back_inserter(isolation));
-    covmatrix =svtTrackObj.covmatrix;
+    memcpy(&isolation, svtTrackObj.isolation, sizeof(isolation));
+    memcpy(&covmatrix, svtTrackObj.covmatrix, sizeof(covmatrix));
 }
 
 
@@ -66,10 +64,8 @@ SvtTrack &SvtTrack::operator=(const SvtTrack &svtTrackObj) {
     *svt_hits = *svtTrackObj.svt_hits;
     fs_particle = svtTrackObj.fs_particle;
     gbl_track = svtTrackObj.gbl_track;
-    isolation = svtTrackObj.isolation;
-    //  std::copy(svtTrackObj.isolation.begin(), svtTrackObj.isolation.end(),
-    //            std::back_inserter(isolation));
-    covmatrix=svtTrackObj.covmatrix;
+    memcpy(&isolation, svtTrackObj.isolation, sizeof(isolation));
+    memcpy(&covmatrix, svtTrackObj.covmatrix, sizeof(covmatrix));
     return *this;
 }
 
@@ -81,8 +77,8 @@ SvtTrack::~SvtTrack() {
 void SvtTrack::Clear(Option_t* /* option */) {
     TObject::Clear();
     svt_hits->Delete();
-    std::fill(isolation.begin(),isolation.end(), 0);
-    std::fill(covmatrix.begin(),covmatrix.end(), 0);
+    memset(isolation, 0, sizeof(isolation));
+    memset(covmatrix, 0, sizeof(covmatrix));
     n_hits = 0;
 }
 

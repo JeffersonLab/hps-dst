@@ -181,7 +181,7 @@ else()
 endif(DOXYGEN_FOUND)
 
 message("-----------------------------------------------")
-message("* Configuration Summary for hps-dst: ")
+message("* Configuration Summary: ")
 message("*")
 message("* ROOT version: ${ROOT_VERSION} ")
 message("* ROOT location: $ENV{ROOTSYS} ")
